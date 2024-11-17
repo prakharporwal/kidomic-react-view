@@ -14,6 +14,11 @@ export const AudioProgressBar: React.FunctionComponent<IProps> = ({
 }) => {
   const formattedDuration = useMemo(() => formatTime(duration), [duration]);
   const formattedCurrentTime = formatTime(currentTime);
+  if (!duration) {
+    // if duration is 0 or undefined
+    // could be due to failed audio loading
+    return null;
+  }
   return (
     <div className="progress-bar">
       <div className="slider">

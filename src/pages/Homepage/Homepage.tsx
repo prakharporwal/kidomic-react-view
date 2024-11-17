@@ -186,9 +186,7 @@ const VideoCard: React.FunctionComponent<any> = ({ data }) => {
             height={"100%"}
             w={"100%"}
             src={
-              data?.thumbnail_url
-                ? process.env.REACT_APP_CDN_ENDPOINT + data?.thumbnail_url
-                : "/placeholder.jpeg"
+              data?.thumbnail_url ? data?.thumbnail_url : "/placeholder.jpeg"
             }
             alt="avatar"
           />

@@ -50,7 +50,7 @@ export const CarouselSimple = (props) => {
             >
               <Link as={ReactLink} to={"/story/" + image.id}>
                 <Image
-                  src={process.env.REACT_APP_CDN_ENDPOINT + image.url}
+                  src={image.url}
                   alt="carousel image"
                   boxSize="full"
                   backgroundSize="cover"

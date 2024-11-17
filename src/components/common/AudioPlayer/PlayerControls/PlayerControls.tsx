@@ -39,9 +39,17 @@ export const PlayerControls: React.FunctionComponent<any> = ({
           console.log("loading audio start");
           setAudioLoading(true);
         }}
+        onError={(err) => {
+          toast({
+            id: "audio-load-failed",
+            status: "error",
+            title: "Loading audio failed!",
+          });
+          setAudioLoading(false);
+          console.error(err);
+        }}
         onCanPlay={() => {
           console.log("can play song");
-          setAudioLoading(false);
         }}
         onAbort={() => {
           toast({

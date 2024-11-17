@@ -33,9 +33,7 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
         console.log("fetched data", body.data.video_uri?.url);
 
         if (body.data.video_uri?.url) {
-          setAudioUrl(
-            process.env.REACT_APP_CDN_ENDPOINT + body.data.video_uri?.url
-          );
+          setAudioUrl(body.data.video_uri?.url);
         }
       })
       .catch((err) => {
@@ -72,9 +70,7 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
         m={4}
         fit="cover"
         src={
-          video.cover_image?.url
-            ? process.env.REACT_APP_CDN_ENDPOINT + video.cover_image?.url
-            : "/placeholder.jpeg"
+          video.cover_image?.url ? video.cover_image?.url : "/placeholder.jpeg"
         }
         alt="avatar"
       />

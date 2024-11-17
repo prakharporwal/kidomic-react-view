@@ -93,11 +93,11 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
       {audioUrl && (
         <div className="video-controls" style={{ marginTop: "16px" }}>
           <div className="action-buttons">
-            <IconButton
+            {/* <IconButton
               size={"lg"}
               icon={<FiChevronLeft color="white" size={30} />}
               aria-label="back"
-            />
+            /> */}
             <IconButton
               rounded={"md"}
               size={"lg"}
@@ -116,11 +116,11 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
               icon={<PlayIcon color="white" size={36} />}
               aria-label="play/pause"
             />
-            <IconButton
+            {/* <IconButton
               size={"lg"}
               icon={<FiChevronRight color="white" size={30} />}
               aria-label="next"
-            />
+            /> */}
           </div>
         </div>
       )}

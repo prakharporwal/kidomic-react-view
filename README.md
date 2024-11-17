@@ -1,4 +1,4 @@
-# Kidomic
+# Kidomic - content for kids
 
 ## Landing page 
 

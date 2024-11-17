@@ -77,10 +77,10 @@ export const PlayerControls: React.FunctionComponent<any> = ({
             }
           />
           <div className="play-controls-buttons">
-            <IconButton
+            {/* <IconButton
               icon={<FiArrowLeft color="white" size={24} />}
               aria-label="previous audio"
-            />
+            /> */}
             <IconButton
               onClick={() => {
                 if (audioPlayerRef.current) {
@@ -104,10 +104,10 @@ export const PlayerControls: React.FunctionComponent<any> = ({
               }
               aria-label="play/pause"
             />
-            <IconButton
+            {/* <IconButton
               icon={<FiArrowRight color="white" size={24} />}
               aria-label="next audio"
-            />
+            /> */}
           </div>
         </div>
       )}

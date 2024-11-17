@@ -6,8 +6,8 @@
   "scripts": {
     "start": "NODE_ENV=development react-scripts start",
     "start:lan": "react-scripts start",
-    "deploy": "NODE_ENV=production npm run build && npm run copy",
     "deploy:lan": "npm run build && npm run copy",
+    "deploy": "scp -i ~/.ssh/dgocn_rsa -r ~/Desktop/kidomic/kidomic-react-view/build/* root@64.227.148.244:/var/www/kid.sociohub.live/html",
     "develop": "webpack-dev-server --mode development --hot",
     "build": "react-scripts build",
     "build:prod": "cp env.example-prod .env && react-scripts build",

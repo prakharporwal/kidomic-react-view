@@ -1,5 +1,5 @@
 import { Link as ReactLink } from "react-router-dom";
-import { Box, Link, Text } from "@chakra-ui/react";
+import { Box, Image, Link, Text } from "@chakra-ui/react";
 
 export const AppLogo = () => {
   return (
@@ -12,8 +12,8 @@ export const AppLogo = () => {
       gap={1}
       textUnderlineOffset={0}
     >
-      {/* <Image src="/logo.png" alt="Logo" w={"8"} h={"8"} m={2} /> */}
-      <Box p={2} px={1} pb={0} border={"1px solid white"} background={"#F80"}>
+      <Image src="/logo.png" alt="Logo" w={6} h={6} />
+      {/* <Box p={2} px={1} pb={0} border={"1px solid white"} background={"#F80"}>
         <Text
           color="white"
           fontSize="2xl"
@@ -23,11 +23,11 @@ export const AppLogo = () => {
         >
           K
         </Text>
-      </Box>
+      </Box> */}
       <Text
         color="white"
         fontSize="xl"
-        fontWeight={"bold"}
+        fontWeight={"extrabold"}
         fontFamily={"fantasy"}
         lineHeight={4}
       >

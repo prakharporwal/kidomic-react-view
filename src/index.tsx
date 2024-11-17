@@ -1,4 +1,3 @@
-import React from "react";
 import { hydrate } from "react-dom";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";

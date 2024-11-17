@@ -1,0 +1,114 @@
+import { IconButton, Spinner, Text, useToast } from "@chakra-ui/react";
+import { forwardRef, useEffect, useRef, useState } from "react";
+import {
+  FiArrowLeft,
+  FiArrowRight,
+  FiPauseCircle,
+  FiPlayCircle,
+} from "react-icons/fi";
+import "./style.css";
+import AudioProgressBar from "./AudioProgressBar";
+
+export const PlayerControls: React.FunctionComponent<any> = ({
+  isPlaying,
+  playerCurrentAudio,
+  toggleAudioPlay,
+}) => {
+  const [audioLoading, setAudioLoading] = useState(false);
+  const audioPlayerRef = useRef<HTMLAudioElement>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const toast = useToast();
+
+  useEffect(() => {
+    if (audioPlayerRef.current && playerCurrentAudio) {
+      isPlaying
+        ? audioPlayerRef.current.play()
+        : audioPlayerRef.current.pause();
+    }
+  }, [isPlaying]);
+
+  return (
+    <div
+      className="audio-controls"
+      style={{ display: playerCurrentAudio ? "block" : "none" }}
+    >
+      <audio
+        controlsList="nodownload noremoteplayback"
+        ref={audioPlayerRef}
+        src={playerCurrentAudio}
+        onTimeUpdate={(e) => {
+          console.log("time", e.currentTarget.currentTime);
+          setCurrentTime(e.currentTarget.currentTime);
+        }}
+        preload="metadata"
+        onLoadStart={() => {
+          console.log("loading audio start");
+          setAudioLoading(true);
+        }}
+        onCanPlay={() => {
+          console.log("can play song");
+          setAudioLoading(false);
+        }}
+        onAbort={() => {
+          toast({
+            id: "audio-load-failed",
+            status: "error",
+            title: "Loading audio failed!",
+          });
+
+          setAudioLoading(false);
+        }}
+        onEnded={() => {
+          toggleAudioPlay(false);
+        }}
+      />
+      {audioLoading ? (
+        <Text textAlign={"center"} color={"white"} p={1}>
+          <Spinner size={"sm"} color="orange.300" />
+        </Text>
+      ) : (
+        <div className="actions">
+          <AudioProgressBar
+            currentTime={currentTime}
+            duration={
+              audioPlayerRef.current ? audioPlayerRef.current.duration : 0
+            }
+          />
+          <div className="play-controls-buttons">
+            <IconButton
+              icon={<FiArrowLeft color="white" size={24} />}
+              aria-label="previous audio"
+            />
+            <IconButton
+              onClick={() => {
+                if (audioPlayerRef.current) {
+                  console.log("audio ref is ready");
+                } else console.log("audio ref is not ready");
+                if (isPlaying) {
+                  audioPlayerRef.current?.pause();
+                } else {
+                  audioPlayerRef.current?.play().catch((error) => {
+                    console.error("Playback error:", error);
+                  });
+                }
+                toggleAudioPlay(!isPlaying);
+              }}
+              icon={
+                isPlaying ? (
+                  <FiPauseCircle color="white" size={24} />
+                ) : (
+                  <FiPlayCircle color="white" size={24} />
+                )
+              }
+              aria-label="play/pause"
+            />
+            <IconButton
+              icon={<FiArrowRight color="white" size={24} />}
+              aria-label="next audio"
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};

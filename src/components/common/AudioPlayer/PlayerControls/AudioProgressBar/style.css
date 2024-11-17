@@ -1,0 +1,25 @@
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .slider {
+    height: 4px;
+    border-radius: 4px;
+    background: white;
+    flex: 4;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .slider-thumb {
+      border-radius: 4px;
+      height: 4px;
+      background: #f80;
+    }
+  }
+
+  .timer-text {
+    margin-left: auto;
+  }
+}

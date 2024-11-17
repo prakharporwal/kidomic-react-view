@@ -1,0 +1,47 @@
+.page {
+  position: absolute;
+  top: 56px;
+  width: 100vw;
+  height: calc(100vh - 56px - 60px);
+  background: #191919;
+  overflow-x: auto;
+}
+
+.video-player {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 64px;
+  background-color: black;
+  padding: 8px;
+}
+
+.video-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+
+  .slider {
+    height: 2px;
+    background: white;
+    width: 94%;
+    display: grid;
+    place-items: center;
+
+    .slider-thumb {
+      padding: 0.5px 0;
+      height: 1px;
+      background: red;
+      width: 90%;
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+}

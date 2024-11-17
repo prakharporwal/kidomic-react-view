@@ -1,0 +1,69 @@
+.audio-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+
+    .play-controls-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+audio[controls] {
+  -webkit-appearance: none; /* For Chrome, Safari, Edge */
+  appearance: none; /* Standard */
+  width: 100%;
+}
+
+audio[controls]::-webkit-media-controls-time-remaining-display {
+  color: white;
+}
+audio::-webkit-media-controls-current-time-display {
+  color: white;
+}
+
+audio[controls]::-webkit-media-controls-panel {
+  border: 2px solid black;
+  outline: none;
+  border-radius: 16px;
+  background: #000;
+}
+
+audio[controls]::-webkit-media-controls-play-button {
+  color: white;
+  background-color: white;
+}
+
+audio[controls]::-webkit-media-controls-timeline {
+  background-color: white;
+}
+
+audio[controls]::-webkit-media-controls-volume-slider {
+}
+
+audio::-webkit-media-controls-panel
+  audio::-webkit-media-controls-mute-button
+  audio::-webkit-media-controls-play-button
+  audio::-webkit-media-controls-timeline-container
+  audio::-webkit-media-controls-current-time-display
+  audio::-webkit-media-controls-time-remaining-display
+  audio::-webkit-media-controls-timeline
+  audio::-webkit-media-controls-volume-slider-container
+  audio::-webkit-media-controls-volume-slider
+  audio::-webkit-media-controls-seek-back-button
+  audio::-webkit-media-controls-seek-forward-button
+  audio::-webkit-media-controls-fullscreen-button
+  audio::-webkit-media-controls-rewind-button
+  audio::-webkit-media-controls-return-to-realtime-button
+  audio::-webkit-media-controls-toggle-closed-captions-button {
+}

@@ -1,3 +1,13 @@
 import { AppPlayerLayout } from "./AppPlayerLayout";
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
 
-export default AppPlayerLayout;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  toggleAudioPlay: (playing: boolean) => {
+    dispatch({ type: "audioplayer/toggleAudioPlay", payload: { playing } });
+  },
+});
+
+const mapStateToProps = () => {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppPlayerLayout);

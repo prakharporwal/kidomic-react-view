@@ -6,6 +6,7 @@ import {
   Link,
   List,
   ListItem,
+  Spacer,
   Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -79,6 +80,7 @@ export const Homepage: React.FunctionComponent<any> = () => {
     <div className="page-wrapper">
       <CarouselSimple images={carouselImages} />
       {loading ? <LoadingShell /> : <StorySuggestions stories={stories} />}
+      <Spacer h={108}></Spacer>
     </div>
   );
 };

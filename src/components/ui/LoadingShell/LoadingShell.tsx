@@ -1,19 +1,10 @@
 import { Spinner } from "@chakra-ui/react";
+import "./loadingshell.css";
 
 const LoadingShell = () => {
   return (
-    <div
-      style={{
-        display: "grid",
-        placeItems: "center",
-        height: "75vh",
-        width: "100vw",
-        margin: "4px",
-        padding: "8px",
-        color: "white",
-      }}
-    >
-      <Spinner size={"md"} color={"colorPalette.600"} />
+    <div className="loading-shell">
+      <Spinner size={"md"} color={"orange.300"} />
     </div>
   );
 };

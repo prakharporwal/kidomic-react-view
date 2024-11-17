@@ -4,18 +4,18 @@ import { connect } from "react-redux";
 import { RootState } from "../../redux/reducer/rootReducer";
 
 const mapStateToProps = (state: RootState) => ({
-  isPlaying: state.audioplayer.playing,
-  currentSong: state.audioplayer.currentSong,
+  playing: state.audioplayer.playing,
+  playerCurrentAudio: state.audioplayer.playerCurrentAudio,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setCurrentSong: (currentSong: string) =>
+  updatePlayerCurrentAudio: (playerCurrentAudio: string) =>
     dispatch({
-      type: "audioplayer/setCurrentSong",
-      payload: { currentSong },
+      type: "audioplayer/updatePlayerCurrentAudio",
+      payload: { playerCurrentAudio },
     }),
-  toggleAudioPlay: (isPlaying: boolean) => {
-    dispatch({ type: "audioplayer/toggleAudioPlay", payload: { isPlaying } });
+  toggleAudioPlay: (playing: boolean) => {
+    dispatch({ type: "audioplayer/toggleAudioPlay", payload: { playing } });
   },
 });
 

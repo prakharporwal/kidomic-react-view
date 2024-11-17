@@ -1,5 +1,5 @@
 import { IconButton, Spinner, Text, useToast } from "@chakra-ui/react";
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   FiArrowLeft,
   FiArrowRight,
@@ -10,7 +10,7 @@ import "./style.css";
 import AudioProgressBar from "./AudioProgressBar";
 
 export const PlayerControls: React.FunctionComponent<any> = ({
-  isPlaying,
+  playing,
   playerCurrentAudio,
   toggleAudioPlay,
 }) => {
@@ -21,11 +21,9 @@ export const PlayerControls: React.FunctionComponent<any> = ({
 
   useEffect(() => {
     if (audioPlayerRef.current && playerCurrentAudio) {
-      isPlaying
-        ? audioPlayerRef.current.play()
-        : audioPlayerRef.current.pause();
+      playing ? audioPlayerRef.current.play() : audioPlayerRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [playing]);
 
   return (
     <div
@@ -37,7 +35,6 @@ export const PlayerControls: React.FunctionComponent<any> = ({
         ref={audioPlayerRef}
         src={playerCurrentAudio}
         onTimeUpdate={(e) => {
-          console.log("time", e.currentTarget.currentTime);
           setCurrentTime(e.currentTarget.currentTime);
         }}
         preload="metadata"
@@ -84,17 +81,17 @@ export const PlayerControls: React.FunctionComponent<any> = ({
                 if (audioPlayerRef.current) {
                   console.log("audio ref is ready");
                 } else console.log("audio ref is not ready");
-                if (isPlaying) {
+                if (playing) {
                   audioPlayerRef.current?.pause();
                 } else {
                   audioPlayerRef.current?.play().catch((error) => {
                     console.error("Playback error:", error);
                   });
                 }
-                toggleAudioPlay(!isPlaying);
+                toggleAudioPlay(!playing);
               }}
               icon={
-                isPlaying ? (
+                playing ? (
                   <FiPauseCircle color="white" size={24} />
                 ) : (
                   <FiPlayCircle color="white" size={24} />

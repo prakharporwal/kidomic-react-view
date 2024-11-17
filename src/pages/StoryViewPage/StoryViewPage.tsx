@@ -1,4 +1,4 @@
-import { IconButton, Image, Text } from "@chakra-ui/react";
+import { IconButton, Image, Spacer, Text } from "@chakra-ui/react";
 import "./style.css";
 
 import { useEffect, useState } from "react";
@@ -20,7 +20,7 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
   const [video, setVideo] = useState<any>({});
   const [loading, setLoading] = useState<boolean>(false);
   const [audioUrl, setAudioUrl] = useState<string>(DEFAULT_AUDIO_URL);
-  const playing = props.isPlaying;
+  const playing = props.playing;
 
   function fetchVideo() {
     setLoading(true);
@@ -34,12 +34,9 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
         console.log("fetched data", body.data.video_uri?.url);
 
         if (body.data.video_uri?.url) {
-          props.setCurrentSong(
+          setAudioUrl(
             process.env.REACT_APP_CDN_ENDPOINT + body.data.video_uri?.url
           );
-        } else {
-          // default audio
-          props.setCurrentSong("");
         }
       })
       .catch((err) => {
@@ -52,15 +49,17 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
 
   useEffect(() => {
     fetchVideo();
-
-    return () => {
-      props.toggleAudioPlay(false);
-    };
   }, []);
 
   if (loading) {
     return <LoadingShell />;
   }
+
+  // center play/pause icon
+  const PlayIcon =
+    isPlayingSongPage(audioUrl, props.playerCurrentAudio) && playing
+      ? FiPauseCircle
+      : FiPlayCircle;
 
   return (
     <div className="page">
@@ -84,7 +83,15 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
       >
         {video.title}
       </Text>
-      {false && (
+      <Text
+        color="white"
+        fontSize={"md"}
+        fontWeight={"bold"}
+        textAlign={"center"}
+      >
+        {video.author}
+      </Text>
+      {audioUrl && (
         <div className="video-controls" style={{ marginTop: "16px" }}>
           <div className="action-buttons">
             <IconButton
@@ -97,15 +104,17 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
               size={"lg"}
               p={4}
               onClick={() => {
-                props.toggleAudioPlay(!playing);
+                // todo: use id for comparison
+                if (!isPlayingSongPage(audioUrl, props.playerCurrentAudio)) {
+                  props.toggleAudioPlay(false);
+                  props.updatePlayerCurrentAudio(audioUrl);
+                  props.toggleAudioPlay(true);
+                } else {
+                  // else just pause and play the current audio
+                  props.toggleAudioPlay(!playing);
+                }
               }}
-              icon={
-                playing ? (
-                  <FiPauseCircle color="white" size={36} />
-                ) : (
-                  <FiPlayCircle color="white" size={36} />
-                )
-              }
+              icon={<PlayIcon color="white" size={36} />}
               aria-label="play/pause"
             />
             <IconButton
@@ -116,7 +125,11 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
           </div>
         </div>
       )}
-      <AudioPlayer />
+      <Spacer h={108} />
     </div>
   );
 };
+
+function isPlayingSongPage(pageAudioUrl: string, globalAudioUrl: string) {
+  return globalAudioUrl === pageAudioUrl;
+}

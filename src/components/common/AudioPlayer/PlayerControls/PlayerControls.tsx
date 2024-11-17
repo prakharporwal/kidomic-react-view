@@ -23,7 +23,7 @@ export const PlayerControls: React.FunctionComponent<any> = ({
     if (audioPlayerRef.current && playerCurrentAudio) {
       playing ? audioPlayerRef.current.play() : audioPlayerRef.current.pause();
     }
-  }, [playing]);
+  }, [playerCurrentAudio, playing]);
 
   return (
     <div className="audio-controls">

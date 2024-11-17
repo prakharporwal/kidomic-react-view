@@ -8,6 +8,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   },
 });
 
-const mapStateToProps = () => {};
+const mapStateToProps = () => {
+  return {};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppPlayerLayout);

@@ -93,7 +93,7 @@ const StorySuggestions = ({ stories }: { stories: StoryReponse[] }) => {
           return null; // skip rendering if no videos
         }
         return (
-          <chakra.div>
+          <chakra.div key={story.id}>
             <Text
               display={"inline"}
               pl={2}

@@ -1,4 +1,4 @@
-import { IconButton, Spinner, Text, useToast } from "@chakra-ui/react";
+import { Box, IconButton, Spinner, Text, useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import {
   FiArrowLeft,
@@ -57,9 +57,9 @@ export const PlayerControls: React.FunctionComponent<any> = ({
         }}
       />
       {audioLoading ? (
-        <Text textAlign={"center"} color={"white"} p={1}>
+        <Box p={1}>
           <Spinner size={"sm"} color="orange.300" />
-        </Text>
+        </Box>
       ) : (
         <div className="actions">
           <AudioProgressBar

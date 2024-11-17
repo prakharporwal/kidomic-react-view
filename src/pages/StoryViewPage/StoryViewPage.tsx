@@ -10,7 +10,6 @@ import {
   FiPauseCircle,
   FiPlayCircle,
 } from "react-icons/fi";
-import AudioPlayer from "../../components/common/AudioPlayer";
 
 const DEFAULT_AUDIO_URL = "/audio/audio-masha.mp3";
 
@@ -52,7 +51,11 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
   }, []);
 
   if (loading) {
-    return <LoadingShell />;
+    return (
+      <div className="page">
+        <LoadingShell />
+      </div>
+    );
   }
 
   // center play/pause icon

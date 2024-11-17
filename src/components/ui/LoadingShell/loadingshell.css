@@ -1,10 +1,9 @@
 .loading-shell {
   display: grid;
   place-items: center;
-  height: auto;
   width: 100vw;
-  margin: 4px;
+  height: 100%;
   padding: 8px;
-  background: #19191988;
+  background: #191919cc;
   color: white;
 }

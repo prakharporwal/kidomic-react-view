@@ -26,10 +26,7 @@ export const PlayerControls: React.FunctionComponent<any> = ({
   }, [playing]);
 
   return (
-    <div
-      className="audio-controls"
-      style={{ display: playerCurrentAudio ? "block" : "none" }}
-    >
+    <div className="audio-controls">
       <audio
         controlsList="nodownload noremoteplayback"
         ref={audioPlayerRef}

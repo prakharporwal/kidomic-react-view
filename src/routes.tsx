@@ -1,14 +1,17 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import WebHeader from "./components/WebHeader";
 
 /** LAZY IMPORT PAGES COMPONENTS */
 const Homepage = lazy(
-  () => import(/* webpackChunkName: "homepage" */ "./pages/Homepage")
+  () => import(/* webpackChunkName: "homePage" */ "./pages/Homepage")
 );
 
 const StoryViewPage = lazy(
-  () => import(/* webpackChunkName: "storyView" */ "./pages/StoryViewPage")
+  () => import(/* webpackChunkName: "storyViewPage" */ "./pages/StoryViewPage")
+);
+
+const WebHeader = lazy(
+  () => import(/* webpackChunkName: "webHeader" */ "./components/WebHeader")
 );
 
 const AppPlayerLayout = lazy(

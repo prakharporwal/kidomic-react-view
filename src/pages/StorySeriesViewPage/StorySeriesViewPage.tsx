@@ -1,15 +1,10 @@
-import { Button, Image, Spacer, Text } from "@chakra-ui/react";
+import { Button, Flex, Image, Spacer, Text, chakra } from "@chakra-ui/react";
 import "./style.css";
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import LoadingShell from "../../components/ui/LoadingShell";
-import {
-  FiChevronLeft,
-  FiChevronRight,
-  FiPauseCircle,
-  FiPlayCircle,
-} from "react-icons/fi";
+import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import EpisodeList from "./EpisodeList";
 import { StoryReponse } from "../../apimodels/homepage";
 
@@ -68,6 +63,9 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
     return null;
   }
 
+  const isKOriginal: boolean =
+    story.author?.toLowerCase() === "Kidomic".toLowerCase();
+
   return (
     <div className="page">
       <Image
@@ -86,14 +84,19 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
       >
         {story.title}
       </Text>
-      <Text
-        color="white"
-        fontSize={"md"}
-        fontWeight={"bold"}
-        textAlign={"center"}
-      >
-        {story.author}
-      </Text>
+      {isKOriginal && (
+        <Flex
+          direction={"row"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          gap={1}
+        >
+          <Image src="/logo.png" alt="Logo" w={4} h={4} />
+          <chakra.span fontSize="sm" fontWeight={""} color="white">
+            {"Originals"}
+          </chakra.span>
+        </Flex>
+      )}
       {audioUrl && (
         <div className="video-controls" style={{ marginTop: "16px" }}>
           <div className="action-buttons">

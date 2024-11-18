@@ -47,7 +47,6 @@ export const PlayerControls: React.FunctionComponent<any> = ({
           //   status: "error",
           //   title: "Loading audio failed!",
           // });
-          console.error(e);
           setAudioLoading(false);
         }}
         onCanPlay={() => {

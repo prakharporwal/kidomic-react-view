@@ -16,6 +16,7 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
         alignItems="center"
         justifyContent="center"
         direction={"column"}
+        width={"32"}
       >
         <Box w={32} h={32} position={"relative"}>
           {/* {isTrending && (
@@ -39,6 +40,11 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
               </Text>
             </Box>
           )} */}
+          {isKOriginal && (
+            <Box position={"absolute"} top={1} left={1}>
+              <Image w={4} h={4} src={"/logo.png"} />
+            </Box>
+          )}
           <Image
             overflow={"hidden"}
             fit="cover"
@@ -50,37 +56,17 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
             alt="avatar"
           />
         </Box>
-        <Link
+        <Text
           display="block"
           fontSize="md"
           fontWeight={"bold"}
-          color="gray.800"
-          _dark={{
-            color: "white",
-          }}
+          color="white"
+          overflowWrap={"break-word"}
+          noOfLines={2}
+          textAlign={"center"}
         >
           {story.title}
-        </Link>
-        {isKOriginal && (
-          <Flex
-            direction={"row"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            gap={1}
-          >
-            <Image src="/logo.png" alt="Logo" w={4} h={4} />
-            <chakra.span
-              fontSize="sm"
-              fontWeight={""}
-              color="gray.700"
-              _dark={{
-                color: "white",
-              }}
-            >
-              {"Originals"}
-            </chakra.span>
-          </Flex>
-        )}
+        </Text>
       </Flex>
     </Link>
   );

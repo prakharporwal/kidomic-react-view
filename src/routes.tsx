@@ -11,19 +11,31 @@ const VideoViewPage = lazy(
 );
 
 const StorySeriesViewPage = lazy(
-  () => import(/* webpackChunkName: "storySeriesViewPage" */ "./pages/StorySeriesViewPage")
+  () =>
+    import(
+      /* webpackChunkName: "storySeriesViewPage" */ "./pages/StorySeriesViewPage"
+    )
 );
 
 const WebHeader = lazy(
-  () => import(/* webpackChunkName: "webHeader" */ "./components/WebHeader")
+  () =>
+    import(/* webpackChunkName: "webHeader" */ "./components/common/WebHeader")
 );
 
 const AppPlayerLayout = lazy(
   () =>
     import(
-      /* webpackChunkName: "appPlayerLayout" */ "./components/AppPlayerLayout"
+      /* webpackChunkName: "appPlayerLayout" */ "./pages/layouts/AppPlayerLayout"
     )
 );
+
+const AuthPageLayout = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "authPlayerLayout" */ "./pages/layouts/AuthPageLayout"
+    )
+);
+
 const SidebarWithHeader = lazy(
   () =>
     import(
@@ -80,6 +92,28 @@ export const appRouter = createBrowserRouter([
     element: <ShortsFeedPage />,
   },
   {
+    path: "/user",
+    element: <AuthPageLayout />,
+    children: [
+      {
+        path: "forgot-password",
+        element: <ForgotPasswordRequestPage />,
+      },
+      {
+        path: "forgot-password-reset",
+        element: <ForgotPasswordResetPage />,
+      },
+      {
+        path: "signin",
+        element: <SignInPage />,
+      },
+      {
+        path: "signup",
+        element: <SignUpPage />,
+      },
+    ],
+  },
+  {
     path: "/",
     element: <AppPlayerLayout />,
     children: [
@@ -88,34 +122,12 @@ export const appRouter = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/video/:videoId",
+        path: "video/:videoId",
         element: <VideoViewPage />,
       },
       {
-        path: "/story/:storyId",
+        path: "story/:storyId",
         element: <StorySeriesViewPage />,
-      },
-    ],
-  },
-  {
-    path: "/",
-    element: <WebHeader />,
-    children: [
-      {
-        path: "/forgot-password",
-        element: <ForgotPasswordRequestPage />,
-      },
-      {
-        path: "/forgot-password-reset",
-        element: <ForgotPasswordResetPage />,
-      },
-      {
-        path: "/signin",
-        element: <SignInPage />,
-      },
-      {
-        path: "/signup",
-        element: <SignUpPage />,
       },
       {
         path: "*",

@@ -1,8 +1,7 @@
-import WebHeader from "../WebHeader";
-import AudioPlayer from "../common/AudioPlayer";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import "./applayout.css";
+import WebHeader from "../../../components/common/WebHeader";
+import AudioPlayer from "../../../components/common/AudioPlayer";
 
 export const AppPlayerLayout: React.FunctionComponent<any> = (props) => {
   useEffect(() => {

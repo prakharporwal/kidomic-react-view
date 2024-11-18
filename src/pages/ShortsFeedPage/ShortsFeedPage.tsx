@@ -19,39 +19,6 @@ const list: ShortVideoListProps = {
       src: "/videos/video-3.mp4",
       description: "TMKOC",
     },
-    "video-4": {
-      id: "video-4",
-      nextId: "video-5",
-      src: "/videos/video-4.mp4",
-      description: "Hrithik roshan",
-    },
-    "video-5": {
-      id: "video-5",
-      nextId: "video-6",
-      src: "/videos/video-5.mp4",
-      description: "Hrithik roshan is dancing very good",
-    },
-    "video-6": {
-      id: "video-6",
-      nextId: "video-7",
-      src: "/videos/video-6.mp4",
-      description: "Frontend masters mein people teaching so much",
-    },
-    "video-7": {
-      id: "video-7",
-      nextId: "video-8",
-      src: "/videos/video-7.mp4",
-    },
-    "video-8": {
-      id: "video-8",
-      nextId: "video-9",
-      src: "/videos/video-8.mp4",
-    },
-    "video-9": {
-      id: "video-9",
-      nextId: "video-2",
-      src: "/videos/video-9.mp4",
-    },
   },
 };
 

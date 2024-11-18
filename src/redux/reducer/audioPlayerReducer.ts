@@ -7,7 +7,9 @@ export interface AudioPlayerState {
 
 const initialState: AudioPlayerState = {
   playing: false,
-  playerCurrentAudio: window.localStorage.getItem("playerCurrentAudio") || "",
+  // playerCurrentAudio: window.localStorage.getItem("playerCurrentAudio") || "",
+  // on second render avoid keeping the player
+  playerCurrentAudio: "",
 };
 
 const audioplayerSlice = createSlice({

@@ -102,29 +102,30 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
               icon={<FiChevronLeft color="white" size={30} />}
               aria-label="back"
             /> */}
-            <Button
-              rounded={"md"}
-              size={"md"}
-              background={"#f80"}
-              color={"white"}
-              onClick={() => {
-                // todo: use id for comparison
-                if (!isPlayingSongPage(audioUrl, props.playerCurrentAudio)) {
-                  props.toggleAudioPlay(false);
-                  props.updatePlayerCurrentAudio(audioUrl);
-                  props.toggleAudioPlay(true);
-                } else {
-                  // else just pause and play the current audio
-                  props.toggleAudioPlay(!playing);
-                }
-              }}
-              leftIcon={<PlayIcon color="white" size={24} />}
-              title={"play story"}
-              aria-label="play/pause"
-            >
-              Play Story
-            </Button>
-
+            {false && (
+              <Button
+                rounded={"md"}
+                size={"md"}
+                background={"#f80"}
+                color={"white"}
+                onClick={() => {
+                  // todo: use id for comparison
+                  if (!isPlayingSongPage(audioUrl, props.playerCurrentAudio)) {
+                    props.toggleAudioPlay(false);
+                    props.updatePlayerCurrentAudio(audioUrl);
+                    props.toggleAudioPlay(true);
+                  } else {
+                    // else just pause and play the current audio
+                    props.toggleAudioPlay(!playing);
+                  }
+                }}
+                leftIcon={<PlayIcon color="white" size={24} />}
+                title={"play story"}
+                aria-label="play/pause"
+              >
+                Play Story
+              </Button>
+            )}
             {/* <IconButton
               size={"lg"}
               icon={<FiChevronRight color="white" size={30} />}

@@ -12,7 +12,7 @@ export const AppLogo = () => {
       gap={1}
       textUnderlineOffset={0}
     >
-      <Image src="/kidomic-logo-long.png" alt="Logo" w={"84px"} h={8} />
+      <Image src="/kidomic-logo-long.png" alt="Logo" w={"96px"} h={8} />
       {/* <Box p={2} px={1} pb={0} border={"1px solid white"} background={"#F80"}>
         <Text
           color="white"

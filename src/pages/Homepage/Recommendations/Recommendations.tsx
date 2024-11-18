@@ -1,6 +1,7 @@
 import { Text, chakra } from "@chakra-ui/react";
 import RecommendedStoryHorizontalList from "../RecommendedStoryHorizontalList";
 import { HomeRecommendationResponse } from "../../../apimodels/homepage";
+import "./style.css";
 
 interface IProps {
   recommendations: HomeRecommendationResponse[];
@@ -8,7 +9,7 @@ interface IProps {
 
 export const Recommendations = ({ recommendations }: IProps) => {
   return (
-    <div>
+    <section className="recommendation-section">
       {recommendations.map((recommendation: HomeRecommendationResponse) => {
         if (recommendation.stories.length === 0) {
           return null; // skip rendering if no videos
@@ -32,6 +33,6 @@ export const Recommendations = ({ recommendations }: IProps) => {
           </chakra.div>
         );
       })}
-    </div>
+    </section>
   );
 };

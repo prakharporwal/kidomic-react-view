@@ -30,8 +30,10 @@ export const PlayerControls: React.FunctionComponent<any> = ({
   return (
     <div className="audio-controls">
       <audio
-        controlsList="nodownload noremoteplayback"
         ref={audioPlayerRef}
+        hidden
+        aria-hidden
+        controlsList="nodownload noremoteplayback"
         src={playerCurrentAudio}
         onTimeUpdate={(e) => {
           setCurrentTime(e.currentTarget.currentTime);

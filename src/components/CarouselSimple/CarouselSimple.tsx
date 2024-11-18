@@ -32,21 +32,21 @@ export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
 
   return (
     <Flex
-      w={"calc(100vw - 24px)"}
-      bg="#1a1a1a"
-      _dark={{
-        bg: "#3e3e3e",
-      }}
-      my={4}
-      mx={2}
-      borderRadius={8}
-      borderWidth={1}
+      w={"100vw"}
+      bg="#191919"
+      mb={4}
       alignItems="center"
       justifyContent="center"
       overflow={"hidden"}
     >
       <Flex w="full" overflow="hidden">
-        <Flex pos="relative" h="200px" w="full" {...carouselStyle}>
+        <Flex
+          pos="relative"
+          h={"auto"}
+          maxH={"50vh"}
+          w="full"
+          {...carouselStyle}
+        >
           {slides.map((slide, sid) => {
             return (
               <Box

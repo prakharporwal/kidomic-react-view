@@ -1,4 +1,12 @@
-import { Button, Flex, Image, Spacer, Text, chakra } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  Spacer,
+  Text,
+  chakra,
+} from "@chakra-ui/react";
 import "./style.css";
 
 import { useEffect, useState } from "react";
@@ -76,27 +84,38 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
         src={story.thumbnail?.url ? story.thumbnail?.url : "/placeholder.jpeg"}
         alt="cover img"
       />
-      <Text
-        color="white"
-        fontSize={"2xl"}
-        fontWeight={"bold"}
-        textAlign={"center"}
-      >
-        {story.title}
-      </Text>
-      {isKOriginal && (
-        <Flex
-          direction={"row"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          gap={1}
+      <Box mx="8" gap={"2"}>
+        <Text
+          color="white"
+          fontSize={"2xl"}
+          fontWeight={"bold"}
+          textAlign={"center"}
         >
-          <Image src="/logo.png" alt="Logo" w={4} h={4} />
-          <chakra.span fontSize="sm" fontWeight={""} color="white">
-            {"Originals"}
-          </chakra.span>
-        </Flex>
-      )}
+          {story.title}
+        </Text>
+        {isKOriginal && (
+          <Flex
+            direction={"row"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            gap={1}
+          >
+            <Image src="/logo.png" alt="Logo" w={4} h={4} />
+            <chakra.span fontSize="sm" fontWeight={""} color="white">
+              {"Originals"}
+            </chakra.span>
+          </Flex>
+        )}
+        <Text
+          color="white"
+          fontSize={"sm"}
+          my={2}
+          textAlign={"justify"}
+          noOfLines={3}
+        >
+          {story.description}
+        </Text>
+      </Box>
       {audioUrl && (
         <div className="video-controls" style={{ marginTop: "16px" }}>
           <div className="action-buttons">

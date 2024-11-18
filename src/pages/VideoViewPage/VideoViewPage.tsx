@@ -15,7 +15,7 @@ const DEFAULT_AUDIO_URL = "/audio/audio-masha.mp3";
 
 export const StoryViewPage: React.FunctionComponent<any> = (props) => {
   const routeParams = useParams();
-  const storyId = routeParams.storyId;
+  const videoId = routeParams.videoId;
   const [video, setVideo] = useState<any>({});
   const [loading, setLoading] = useState<boolean>(false);
   const [audioUrl, setAudioUrl] = useState<string>(DEFAULT_AUDIO_URL);
@@ -23,7 +23,7 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
 
   function fetchVideo() {
     setLoading(true);
-    fetch(process.env.REACT_APP_PROD_API + `/v1/videos/${storyId}?populate=*`)
+    fetch(process.env.REACT_APP_PROD_API + `/v1/videos/${videoId}?populate=*`)
       .then((res) => {
         if (!res.ok) throw new Error();
         return res.json();

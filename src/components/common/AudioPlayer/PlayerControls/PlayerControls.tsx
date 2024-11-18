@@ -1,4 +1,4 @@
-import { Box, IconButton, Spinner, Text, useToast } from "@chakra-ui/react";
+import { Flex, IconButton, Spinner, useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import {
   FiArrowLeft,
@@ -24,6 +24,8 @@ export const PlayerControls: React.FunctionComponent<any> = ({
       playing ? audioPlayerRef.current.play() : audioPlayerRef.current.pause();
     }
   }, [playerCurrentAudio, playing]);
+
+  const PlayIconComp = playing ? FiPauseCircle : FiPlayCircle;
 
   return (
     <div className="audio-controls">
@@ -53,11 +55,6 @@ export const PlayerControls: React.FunctionComponent<any> = ({
           setAudioLoading(false);
         }}
         onAbort={() => {
-          toast({
-            id: "audio-load-failed",
-            status: "error",
-            title: "Loading audio abort!",
-          });
           setAudioLoading(false);
         }}
         onEnded={() => {
@@ -65,9 +62,9 @@ export const PlayerControls: React.FunctionComponent<any> = ({
         }}
       />
       {audioLoading ? (
-        <Box p={1}>
+        <Flex p={1} justifyContent={"center"}>
           <Spinner size={"sm"} color="orange.300" />
-        </Box>
+        </Flex>
       ) : (
         <div className="actions">
           <AudioProgressBar
@@ -82,6 +79,7 @@ export const PlayerControls: React.FunctionComponent<any> = ({
               aria-label="previous audio"
             /> */}
             <IconButton
+              size={"md"}
               onClick={() => {
                 if (audioPlayerRef.current) {
                   console.log("audio ref is ready");
@@ -95,13 +93,7 @@ export const PlayerControls: React.FunctionComponent<any> = ({
                 }
                 toggleAudioPlay(!playing);
               }}
-              icon={
-                playing ? (
-                  <FiPauseCircle color="white" size={24} />
-                ) : (
-                  <FiPlayCircle color="white" size={24} />
-                )
-              }
+              icon={<PlayIconComp color="white" size={30} />}
               aria-label="play/pause"
             />
             {/* <IconButton

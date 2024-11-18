@@ -1,0 +1,15 @@
+.page {
+  position: absolute;
+  top: 56px;
+  width: 100vw;
+  height: calc(100vh - 56px);
+  background: #191919;
+  overflow-x: auto;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}

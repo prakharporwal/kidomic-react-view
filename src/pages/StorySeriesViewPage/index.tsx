@@ -1,4 +1,4 @@
-import { StoryViewPage } from "./StoryViewPage";
+import { StorySeriesViewPage } from "./StorySeriesViewPage";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { RootState } from "../../redux/reducer/rootReducer";
@@ -19,4 +19,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryViewPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StorySeriesViewPage);

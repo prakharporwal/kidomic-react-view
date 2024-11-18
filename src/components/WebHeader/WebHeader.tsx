@@ -36,7 +36,9 @@ export default function WebHeader() {
               strokeWidth={1.2}
               size={32}
               onClick={() => {
+                console.log(location);
                 if (location.key !== "default") navigate(-1);
+                else navigate("/");
               }}
             />
           </Box>

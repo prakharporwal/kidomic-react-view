@@ -2,12 +2,16 @@ import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 /** LAZY IMPORT PAGES COMPONENTS */
-const Homepage = lazy(
-  () => import(/* webpackChunkName: "homePage" */ "./pages/Homepage")
+const HomePage = lazy(
+  () => import(/* webpackChunkName: "homePage" */ "./pages/HomePage")
 );
 
-const StoryViewPage = lazy(
-  () => import(/* webpackChunkName: "storyViewPage" */ "./pages/StoryViewPage")
+const VideoViewPage = lazy(
+  () => import(/* webpackChunkName: "videoViewPage" */ "./pages/VideoViewPage")
+);
+
+const StorySeriesViewPage = lazy(
+  () => import(/* webpackChunkName: "storySeriesViewPage" */ "./pages/StorySeriesViewPage")
 );
 
 const WebHeader = lazy(
@@ -81,11 +85,15 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Homepage />,
+        element: <HomePage />,
+      },
+      {
+        path: "/video/:videoId",
+        element: <VideoViewPage />,
       },
       {
         path: "/story/:storyId",
-        element: <StoryViewPage />,
+        element: <StorySeriesViewPage />,
       },
     ],
   },

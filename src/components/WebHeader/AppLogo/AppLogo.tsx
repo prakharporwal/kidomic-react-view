@@ -12,7 +12,7 @@ export const AppLogo = () => {
       gap={1}
       textUnderlineOffset={0}
     >
-      <Image src="/logo.png" alt="Logo" w={6} h={6} />
+      <Image src="/kidomic-logo.png" alt="Logo" w={"84px"} h={8} />
       {/* <Box p={2} px={1} pb={0} border={"1px solid white"} background={"#F80"}>
         <Text
           color="white"
@@ -24,7 +24,7 @@ export const AppLogo = () => {
           K
         </Text>
       </Box> */}
-      <Text
+      {/* <Text
         color="white"
         fontSize="xl"
         fontWeight={"extrabold"}
@@ -32,7 +32,7 @@ export const AppLogo = () => {
         lineHeight={4}
       >
         idomic
-      </Text>
+      </Text> */}
     </Link>
   );
 };

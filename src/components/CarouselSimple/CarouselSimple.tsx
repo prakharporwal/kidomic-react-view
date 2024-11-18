@@ -1,8 +1,13 @@
 import { Box, Flex, Image, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link as ReactLink } from "react-router-dom";
+import { HomeCarouselResponse } from "../../apimodels/homepage";
 
-export const CarouselSimple = (props) => {
+interface IProps {
+  images: HomeCarouselResponse[];
+}
+
+export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
   const slides = props.images;
   const [currentSlide, setCurrentSlide] = useState(0);
   const slidesCount = slides.length;
@@ -24,6 +29,7 @@ export const CarouselSimple = (props) => {
     }, SLIDES_INTERVAL_TIME);
     return () => clearInterval(automatedSlide);
   }, [slidesCount]);
+
   return (
     <Flex
       w={"calc(100vw - 24px)"}
@@ -41,23 +47,25 @@ export const CarouselSimple = (props) => {
     >
       <Flex w="full" overflow="hidden">
         <Flex pos="relative" h="200px" w="full" {...carouselStyle}>
-          {slides.map((image, sid) => (
-            <Box
-              key={`slide-${image.id}`}
-              flex="none"
-              boxSize="full"
-              shadow="md"
-            >
-              <Link as={ReactLink} to={"/story/" + image.id}>
-                <Image
-                  src={image.url}
-                  alt="carousel image"
-                  boxSize="full"
-                  backgroundSize="cover"
-                />
-              </Link>
-            </Box>
-          ))}
+          {slides.map((slide, sid) => {
+            return (
+              <Box
+                key={`slide-${slide.id}`}
+                flex="none"
+                boxSize="full"
+                shadow="md"
+              >
+                <Link as={ReactLink} to={slide.redirectUrl}>
+                  <Image
+                    src={slide.image?.url}
+                    alt="carousel image"
+                    boxSize="full"
+                    backgroundSize="cover"
+                  />
+                </Link>
+              </Box>
+            );
+          })}
         </Flex>
       </Flex>
     </Flex>

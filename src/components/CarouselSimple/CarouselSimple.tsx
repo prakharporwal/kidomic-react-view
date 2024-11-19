@@ -12,10 +12,10 @@ export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slidesCount = slides.length;
   const carouselStyle = {
-    transition: "all .5s",
+    transition: "all 0.5s",
     ml: `-${currentSlide * 100}%`,
   };
-  const SLIDES_INTERVAL_TIME = 3000;
+  const SLIDES_INTERVAL_TIME = 4000;
   const ANIMATION_DIRECTION = "right";
   useEffect(() => {
     const prevSlide = () => {

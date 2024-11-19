@@ -26,7 +26,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
   const [audioUrl, setAudioUrl] = useState<string>(DEFAULT_AUDIO_URL);
   const playing = props.playing;
 
-  function fetchVideo() {
+  function fetchStory() {
     setLoading(true);
     fetch(process.env.REACT_APP_PROD_API + `/v1/stories/${storyId}?populate=*`)
       .then((res) => {
@@ -50,8 +50,8 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
   }
 
   useEffect(() => {
-    fetchVideo();
-  }, []);
+    fetchStory();
+  }, [storyId]);
 
   if (loading) {
     return (

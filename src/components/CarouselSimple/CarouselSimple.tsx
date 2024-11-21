@@ -34,17 +34,18 @@ export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
     <Flex
       w={"100vw"}
       bg="#191919"
+      mt={1}
       mb={4}
       alignItems="center"
       justifyContent="center"
       overflow={"hidden"}
     >
-      <Flex w="full" overflow="hidden">
+      <Flex overflow="hidden">
         <Flex
           pos="relative"
           h={"auto"}
-          maxH={"50vh"}
           w="full"
+          maxW={"720px"}
           {...carouselStyle}
         >
           {slides.map((slide, sid) => {
@@ -60,6 +61,8 @@ export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
                     src={slide.image?.url}
                     alt="carousel image"
                     boxSize="full"
+                    width={"full"}
+                    aspectRatio={"16/9"}
                     backgroundSize="cover"
                   />
                 </Link>

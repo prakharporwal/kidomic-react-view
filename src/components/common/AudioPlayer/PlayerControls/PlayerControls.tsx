@@ -1,4 +1,4 @@
-import { Flex, IconButton, Spinner, useToast } from "@chakra-ui/react";
+import { chakra, Flex, IconButton, Spinner, useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import {
   FiArrowLeft,
@@ -15,53 +15,49 @@ export const PlayerControls: React.FunctionComponent<any> = ({
   toggleAudioPlay,
 }) => {
   const [audioLoading, setAudioLoading] = useState(false);
-  const audioPlayerRef = useRef<HTMLAudioElement>(null);
+  const playerRef = useRef<HTMLVideoElement>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const toast = useToast();
 
   useEffect(() => {
-    if (audioPlayerRef.current && playerCurrentAudio) {
-      playing ? audioPlayerRef.current.play() : audioPlayerRef.current.pause();
+    if (playerRef.current && playerCurrentAudio) {
+      playing ? playerRef.current.play() : playerRef.current.pause();
     }
   }, [playerCurrentAudio, playing]);
 
   const PlayIconComp = playing ? FiPauseCircle : FiPlayCircle;
 
+  const propsX = {
+    hidden: false,
+    "aria-hidden": false,
+    controlsList: "nodownload noremoteplayback",
+    src: playerCurrentAudio,
+    onTimeUpdate: (e: any) => {
+      setCurrentTime(e.currentTarget.currentTime);
+    },
+    preload: "metadata",
+    loop: true,
+    onLoadStart: () => {
+      console.log("loading audio start");
+      setAudioLoading(true);
+    },
+    onError: (e: any) => {
+      setAudioLoading(false);
+    },
+    onCanPlay: () => {
+      console.log("can play song now");
+      setAudioLoading(false);
+    },
+    onAbort: () => {
+      setAudioLoading(false);
+    },
+    onEnded: () => {
+      toggleAudioPlay(false);
+    },
+  };
   return (
     <div className="audio-controls">
-      <audio
-        ref={audioPlayerRef}
-        hidden
-        aria-hidden
-        controlsList="nodownload noremoteplayback"
-        src={playerCurrentAudio}
-        onTimeUpdate={(e) => {
-          setCurrentTime(e.currentTarget.currentTime);
-        }}
-        preload="metadata"
-        onLoadStart={() => {
-          console.log("loading audio start");
-          setAudioLoading(true);
-        }}
-        onError={(e) => {
-          // toast({
-          //   id: "audio-load-failed",
-          //   status: "error",
-          //   title: "Loading audio failed!",
-          // });
-          setAudioLoading(false);
-        }}
-        onCanPlay={() => {
-          console.log("can play song");
-          setAudioLoading(false);
-        }}
-        onAbort={() => {
-          setAudioLoading(false);
-        }}
-        onEnded={() => {
-          toggleAudioPlay(false);
-        }}
-      />
+      <video ref={playerRef} {...propsX} />
       {audioLoading ? (
         <Flex p={1} justifyContent={"center"}>
           <Spinner size={"sm"} color="orange.300" />
@@ -70,9 +66,7 @@ export const PlayerControls: React.FunctionComponent<any> = ({
         <div className="actions">
           <AudioProgressBar
             currentTime={currentTime}
-            duration={
-              audioPlayerRef.current ? audioPlayerRef.current.duration : 0
-            }
+            duration={playerRef.current ? playerRef.current.duration : 0}
           />
           <div className="play-controls-buttons">
             {/* <IconButton
@@ -82,13 +76,13 @@ export const PlayerControls: React.FunctionComponent<any> = ({
             <IconButton
               size={"md"}
               onClick={() => {
-                if (audioPlayerRef.current) {
+                if (playerRef.current) {
                   console.log("audio ref is ready");
                 } else console.log("audio ref is not ready");
                 if (playing) {
-                  audioPlayerRef.current?.pause();
+                  playerRef.current?.pause();
                 } else {
-                  audioPlayerRef.current?.play().catch((error) => {
+                  playerRef.current?.play().catch((error) => {
                     console.error("Playback error:", error);
                   });
                 }

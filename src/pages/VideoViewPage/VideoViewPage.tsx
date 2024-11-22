@@ -1,4 +1,9 @@
-import { IconButton, Image, Spacer, Text } from "@chakra-ui/react";
+import {
+  IconButton,
+  Image,
+  Spacer,
+  Text
+} from "@chakra-ui/react";
 import "./style.css";
 
 import { useEffect, useState } from "react";
@@ -10,6 +15,7 @@ import {
   FiPauseCircle,
   FiPlayCircle,
 } from "react-icons/fi";
+import VideoPlayer from "../VideoPlayer";
 
 const DEFAULT_AUDIO_URL = "/audio/audio-masha.mp3";
 

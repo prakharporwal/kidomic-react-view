@@ -17,11 +17,6 @@ const StorySeriesViewPage = lazy(
     )
 );
 
-const WebHeader = lazy(
-  () =>
-    import(/* webpackChunkName: "webHeader" */ "./components/common/WebHeader")
-);
-
 const AppPlayerLayout = lazy(
   () =>
     import(

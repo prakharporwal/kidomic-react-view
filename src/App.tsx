@@ -7,6 +7,8 @@ import { appRouter } from "./routes";
 import store from "./redux/store/store";
 import { Provider } from "react-redux";
 import { extendTheme } from "@chakra-ui/react";
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "./configs/graphql/apolloConfig";
 
 const theme = extendTheme({
   colors: {
@@ -32,9 +34,11 @@ export const App = () => {
         <ChakraProvider theme={theme}>
           <DarkMode>
             <Provider store={store}>
-              <Suspense fallback={<LoadingShell />}>
-                <RouterProvider router={appRouter} />
-              </Suspense>
+              <ApolloProvider client={apolloClient}>
+                <Suspense fallback={<LoadingShell />}>
+                  <RouterProvider router={appRouter} />
+                </Suspense>
+              </ApolloProvider>
             </Provider>
           </DarkMode>
         </ChakraProvider>

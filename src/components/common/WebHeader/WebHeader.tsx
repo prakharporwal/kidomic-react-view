@@ -47,6 +47,20 @@ export default function WebHeader() {
         )}
         <AppLogo />
       </Flex>
+      {/* Fix: make desktop compatible responsive: compatible warning */}
+      <Flex
+        position={"absolute"}
+        display={"block"}
+        top={14}
+        textAlign={"center"}
+        color={"white"}
+        zIndex={{ md: -1000, lg: 1000 }}
+        background={"red.500"}
+        height={6}
+        width={"100vw"}
+      >
+        we currently support mobile device. view in mobile for best experience
+      </Flex>
     </Box>
   );
 }

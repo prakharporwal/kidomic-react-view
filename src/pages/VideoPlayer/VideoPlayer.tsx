@@ -11,7 +11,6 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [videoLoading, setVideoLoading] = useState<boolean>(false);
   const playing: boolean = props.playing;
-  const toast = useToast();
   const PlayIconComp = playing ? FiPauseCircle : FiPlayCircle;
 
   function togglePlayState() {
@@ -44,7 +43,7 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
 
   return (
     <Flex flexDirection={props.isOpen ? "column" : "row"} gap={4} mt={4}>
-      <Flex width={props.isOpen ? "" : "120px"}>
+      <Flex h={props.isOpen ? "" : "60px"}>
         <video
           ref={videoPlayerRef}
           controlsList="nodownload noremoteplayback"

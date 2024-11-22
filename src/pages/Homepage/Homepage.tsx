@@ -18,27 +18,8 @@ export const HomePage: React.FunctionComponent<any> = () => {
     HomeCarouselResponse[] | null
   >(null);
 
-  function fetchStories() {
-    setLoading(true);
-    fetch(
-      process.env.REACT_APP_PROD_API + "/v1/home-recommendations?populate=*"
-    )
-      .then((res) => {
-        if (!res.ok) throw new Error();
-        return res.json();
-      })
-      .then((data) => {
-        setRecommendations(data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }
-
   function fetchCarouselDetails() {
+    setLoading(true);
     fetch(process.env.REACT_APP_PROD_API + "/v1/home-carousels?populate=*")
       .then((res) => {
         if (!res.ok) throw new Error();
@@ -57,7 +38,6 @@ export const HomePage: React.FunctionComponent<any> = () => {
 
   useEffect(() => {
     fetchCarouselDetails();
-    fetchStories();
   }, []);
 
   if (!carouselImages) {
@@ -66,12 +46,8 @@ export const HomePage: React.FunctionComponent<any> = () => {
 
   return (
     <div className="page-wrapper">
-      <CarouselSimple images={carouselImages} />
-      {loading ? (
-        <LoadingShell />
-      ) : (
-        <Recommendations recommendations={recommendations} />
-      )}
+      {loading ? <LoadingShell /> : <CarouselSimple images={carouselImages} />}
+      <Recommendations />
       <Spacer h={108}></Spacer>
     </div>
   );

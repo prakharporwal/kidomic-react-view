@@ -1,13 +1,42 @@
 import { Text, chakra } from "@chakra-ui/react";
 import RecommendedStoryHorizontalList from "../RecommendedStoryHorizontalList";
 import { HomeRecommendationResponse } from "../../../apimodels/homepage";
+import { useQuery, gql } from "@apollo/client";
+import LoadingShell from "../../../components/ui/LoadingShell";
+import { lazy } from "react";
 import "./style.css";
 
-interface IProps {
-  recommendations: HomeRecommendationResponse[];
-}
+const GQL_QUERY_GET_HOME_RECOMMENDATIONS = gql`
+  query HomeRecommendations {
+    homeRecommendations {
+      documentId
+      title
+      stories {
+        documentId
+        title
+        author
+        thumbnail {
+          formats
+          mime
+        }
+      }
+    }
+  }
+`;
 
-export const Recommendations = ({ recommendations }: IProps) => {
+export const Recommendations = () => {
+  const { loading, error, data } = useQuery(GQL_QUERY_GET_HOME_RECOMMENDATIONS);
+
+  if (loading) return <LoadingShell />;
+
+  if (error) {
+    const ErrorBox = lazy(() => import("../../ErrorBox"));
+    return <ErrorBox />;
+  }
+
+  console.log(data);
+
+  const recommendations = data.homeRecommendations;
   return (
     <section className="recommendation-section">
       {recommendations.map((recommendation: HomeRecommendationResponse) => {

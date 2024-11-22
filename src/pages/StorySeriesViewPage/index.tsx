@@ -5,14 +5,14 @@ import { RootState } from "../../redux/reducer/rootReducer";
 
 const mapStateToProps = (state: RootState) => ({
   playing: state.audioplayer.playing,
-  playerCurrentAudio: state.audioplayer.playerCurrentAudio,
+  playerCurrentVideo: state.audioplayer.playerCurrentVideo,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updatePlayerCurrentAudio: (playerCurrentAudio: string) =>
+  updatePlayerCurrentVideo: (playerCurrentVideo: string) =>
     dispatch({
-      type: "audioplayer/updatePlayerCurrentAudio",
-      payload: { playerCurrentAudio },
+      type: "audioplayer/updatePlayerCurrentVideo",
+      payload: { playerCurrentVideo },
     }),
   toggleAudioPlay: (playing: boolean) => {
     dispatch({ type: "audioplayer/toggleAudioPlay", payload: { playing } });

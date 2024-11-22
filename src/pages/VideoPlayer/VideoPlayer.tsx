@@ -1,4 +1,4 @@
-import { Flex, IconButton, Spinner, useToast } from "@chakra-ui/react";
+import { Flex, IconButton, Spinner } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import AudioProgressBar from "../../components/common/AudioPlayer/PlayerControls/AudioProgressBar";
 import { RiReplay10Fill, RiForward10Fill } from "react-icons/ri";
@@ -13,19 +13,19 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
   const playing: boolean = props.playing;
   const PlayIconComp = playing ? FiPauseCircle : FiPlayCircle;
 
-  function togglePlayState() {
-    if (videoPlayerRef.current) {
-      console.log("audio ref is ready");
-    } else console.log("audio ref is not ready");
-    if (playing) {
-      videoPlayerRef.current?.pause();
-    } else {
-      videoPlayerRef.current?.play().catch((error) => {
-        console.error("Playback error:", error);
-      });
-    }
-    props.toggleAudioPlay(!playing);
-  }
+  // function togglePlayState() {
+  //   if (videoPlayerRef.current) {
+  //     console.log("audio ref is ready");
+  //   } else console.log("audio ref is not ready");
+  //   if (playing) {
+  //     videoPlayerRef.current?.pause();
+  //   } else {
+  //     videoPlayerRef.current?.play().catch((error) => {
+  //       console.error("Playback error:", error);
+  //     });
+  //   }
+  //   props.toggleAudioPlay(!playing);
+  // }
 
   function seekVideo(time: number) {
     if (videoPlayerRef.current)
@@ -34,10 +34,10 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
   }
 
   useEffect(() => {
-    if (videoPlayerRef.current && props.playerCurrentAudio) {
+    if (videoPlayerRef.current && props.playerCurrentVideo.uri) {
       playing ? videoPlayerRef.current.play() : videoPlayerRef.current.pause();
     }
-  }, [props.playerCurrentAudio, playing]);
+  }, [props.playerCurrentVideo.uri, playing]);
 
   const iconSize = props.isOpen ? 32 : 28;
 
@@ -48,11 +48,8 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
           ref={videoPlayerRef}
           controlsList="nodownload noremoteplayback"
           preload="metadata"
-          poster={props.poster ?? "/placeholder.png"}
-          src={
-            props.playerCurrentAudio ||
-            "https://s3.ap-south-1.amazonaws.com/kid.sociohub.live/strapi/media/Simba_the_brave_lion_Made_with_Clipchamp_41e0e6ac96.mp4"
-          }
+          poster={props.playerCurrentVideo.image}
+          src={props.playerCurrentVideo.uri}
           onTimeUpdate={(e) => {
             setCurrentTime(e.currentTarget.currentTime);
           }}

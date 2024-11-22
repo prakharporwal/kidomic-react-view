@@ -11,19 +11,18 @@ import AudioProgressBar from "./AudioProgressBar";
 
 export const PlayerControls: React.FunctionComponent<any> = ({
   playing,
-  playerCurrentAudio,
+  playerCurrentVideo,
   toggleAudioPlay,
 }) => {
   const [audioLoading, setAudioLoading] = useState(false);
   const playerRef = useRef<HTMLVideoElement>(null);
   const [currentTime, setCurrentTime] = useState(0);
-  const toast = useToast();
 
   useEffect(() => {
-    if (playerRef.current && playerCurrentAudio) {
+    if (playerRef.current && playerCurrentVideo.uri) {
       playing ? playerRef.current.play() : playerRef.current.pause();
     }
-  }, [playerCurrentAudio, playing]);
+  }, [playerCurrentVideo.uri, playing]);
 
   const PlayIconComp = playing ? FiPauseCircle : FiPlayCircle;
 
@@ -31,7 +30,7 @@ export const PlayerControls: React.FunctionComponent<any> = ({
     hidden: false,
     "aria-hidden": false,
     controlsList: "nodownload noremoteplayback",
-    src: playerCurrentAudio,
+    src: playerCurrentVideo.uri,
     onTimeUpdate: (e: any) => {
       setCurrentTime(e.currentTarget.currentTime);
     },

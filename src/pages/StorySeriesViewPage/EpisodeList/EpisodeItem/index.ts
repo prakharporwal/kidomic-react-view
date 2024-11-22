@@ -1,14 +1,15 @@
 import { connect } from "react-redux";
 import { EpisodeItem } from "./EpisodeItem";
 import { Dispatch } from "redux";
+import { VideoDataState } from "../../../../redux/reducer/audioPlayerReducer";
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updatePlayerCurrentAudio: (playerCurrentAudio: string) =>
+  updatePlayerCurrentVideo: (playerCurrentVideo: VideoDataState) =>
     dispatch({
-      type: "audioplayer/updatePlayerCurrentAudio",
-      payload: { playerCurrentAudio },
+      type: "audioplayer/updatePlayerCurrentVideo",
+      payload: { playerCurrentVideo },
     }),
 });
 

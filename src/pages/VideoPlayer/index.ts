@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const mapStateToProps = (state: RootState) => ({
   playing: state.audioplayer.playing,
-  playerCurrentAudio: state.audioplayer.playerCurrentAudio,
+  playerCurrentVideo: state.audioplayer.playerCurrentVideo,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayer);

@@ -1,9 +1,11 @@
 import { Card, Flex, Text } from "@chakra-ui/react";
 import { VideoResponse } from "../../../../apimodels/homepage";
 import SquareImage from "../../../../components/ui/SquareImage";
+import { VideoDataState } from "../../../../redux/reducer/audioPlayerReducer";
+import { extractImageUrl } from "../../../../utils/imageUtils";
 interface IProps {
   episode: VideoResponse;
-  updatePlayerCurrentAudio: (playerCurrentAudio: string) => void;
+  updatePlayerCurrentVideo: (playerCurrentVideo: VideoDataState) => void;
 }
 
 export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
@@ -15,7 +17,11 @@ export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
       bg={"#292929"}
       w={"calc(100vw - 32px)"}
       onClick={() => {
-        if (video_uri?.url) props.updatePlayerCurrentAudio(video_uri?.url);
+        if (video_uri?.url)
+          props.updatePlayerCurrentVideo({
+            uri: video_uri?.url,
+            image: extractImageUrl(cover_image),
+          });
       }}
     >
       <Flex flexDirection={"row"} gap={2} justifyContent={"flex-start"}>

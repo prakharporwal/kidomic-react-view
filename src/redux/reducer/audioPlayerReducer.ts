@@ -1,15 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export interface VideoDataState {
+  image: string;
+  uri: string;
+  name?: string;
+}
 export interface AudioPlayerState {
   playing: boolean;
-  playerCurrentAudio: string;
+  playerCurrentVideo: VideoDataState;
 }
 
 const initialState: AudioPlayerState = {
   playing: false,
-  // playerCurrentAudio: window.localStorage.getItem("playerCurrentAudio") || "",
-  // on second render avoid keeping the player
-  playerCurrentAudio: "",
+  playerCurrentVideo: { image: "/placeholder.png", uri: "" },
 };
 
 const audioplayerSlice = createSlice({
@@ -19,13 +22,9 @@ const audioplayerSlice = createSlice({
     toggleAudioPlay: (state, action) => {
       state.playing = action.payload.playing;
     },
-    updatePlayerCurrentAudio: (state, action) => {
+    updatePlayerCurrentVideo: (state, action) => {
       state.playing = false;
-      state.playerCurrentAudio = action.payload.playerCurrentAudio;
-      window.localStorage.setItem(
-        "playerCurrentAudio",
-        action.payload.playerCurrentAudio
-      );
+      state.playerCurrentVideo = action.payload.playerCurrentVideo;
       state.playing = true;
     },
   },

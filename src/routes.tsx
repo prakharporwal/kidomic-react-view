@@ -6,10 +6,6 @@ const HomePage = lazy(
   () => import(/* webpackChunkName: "homePage" */ "./pages/HomePage")
 );
 
-const VideoViewPage = lazy(
-  () => import(/* webpackChunkName: "videoViewPage" */ "./pages/VideoViewPage")
-);
-
 const StorySeriesViewPage = lazy(
   () =>
     import(
@@ -115,10 +111,6 @@ export const appRouter = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
-      },
-      {
-        path: "video/:videoId",
-        element: <VideoViewPage />,
       },
       {
         path: "story/:storyId",

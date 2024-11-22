@@ -12,8 +12,8 @@ import LoadingShell from "../../components/ui/LoadingShell";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import EpisodeList from "./EpisodeList";
 import { useQuery, gql } from "@apollo/client";
-import "./style.css";
 import { lazy } from "react";
+import "./style.css";
 
 const GQL_QUERY_GET_STORIES = gql`
   query StoryDetails($documentId: ID!) {
@@ -74,7 +74,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
 
   // center play/pause icon
   const PlayIcon =
-    isPlayingSongPage("audioUrl", props.playerCurrentAudio) && playing
+    isPlayingSongPage("audioUrl", props.playerCurrentVideo.uri) && playing
       ? FiPauseCircle
       : FiPlayCircle;
 
@@ -151,7 +151,6 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
             colorScheme={"brand"}
             color={"white"}
             onClick={() => {
-              console.log("chal hat");
               // todo: use id for comparison
               // if (!isPlayingSongPage(audioUrl, props.playerCurrentAudio)) {
               //   props.toggleAudioPlay(false);

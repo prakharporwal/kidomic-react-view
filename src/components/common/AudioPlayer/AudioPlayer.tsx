@@ -11,7 +11,7 @@ export const AudioPlayer: React.FunctionComponent<any> = (props) => {
     <div
       className="audio-player"
       style={{
-        display: props.playerCurrentAudio ? "block" : "none",
+        display: props.playerCurrentVideo.uri ? "block" : "none",
         height: isOpen ? "calc(100vh - 56px)" : "",
         borderRadius: "12px 12px 0 0",
         borderTop: "1px solid white",

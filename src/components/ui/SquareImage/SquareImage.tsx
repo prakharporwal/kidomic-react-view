@@ -1,4 +1,5 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
+import { extractImageUrl } from "../../../utils/imageUtils";
 
 interface IProps {
   data: any;
@@ -6,11 +7,7 @@ interface IProps {
 }
 
 export const SquareImage: React.FunctionComponent<IProps> = ({ data, alt }) => {
-  const src =
-    data?.formats?.medium?.url ||
-    data?.url ||
-    data?.formats?.thumbnail?.url ||
-    "/placeholder.png";
+  const src = extractImageUrl(data);
 
   return (
     <Image

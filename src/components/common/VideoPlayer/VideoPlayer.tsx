@@ -1,10 +1,10 @@
 import { Box, IconButton, useDisclosure } from "@chakra-ui/react";
 import { useRef } from "react";
-import VideoPlayer from "../../../pages/VideoPlayer";
+import VideoControls from "../../../pages/VideoControls";
 import { FiChevronDown } from "react-icons/fi";
 import "./style.css";
 
-export const AudioPlayer: React.FunctionComponent<any> = (props) => {
+export const VideoPlayer: React.FunctionComponent<any> = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<HTMLButtonElement>(null);
   return (
@@ -36,7 +36,7 @@ export const AudioPlayer: React.FunctionComponent<any> = (props) => {
         </Box>
       )}
       {/* <PlayerControls /> */}
-      <VideoPlayer isOpen={isOpen} />
+      <VideoControls isOpen={isOpen} />
       {/* <Drawer
         isOpen={false}
         closeOnOverlayClick

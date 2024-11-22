@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { VideoPlayer } from "./VideoPlayer";
+import { VideoControls } from "./VideoControls";
 import { RootState } from "../../redux/reducer/rootReducer";
 import { Dispatch } from "redux";
 
@@ -14,4 +14,4 @@ const mapStateToProps = (state: RootState) => ({
   playerCurrentVideo: state.audioplayer.playerCurrentVideo,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayer);
+export default connect(mapStateToProps, mapDispatchToProps)(VideoControls);

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { RootState } from "../../../redux/reducer/rootReducer";
-import { AudioPlayer } from "./AudioPlayer";
+import { VideoPlayer } from "./VideoPlayer";
 
 const mapDispatchToProps = () => {
   return {};
@@ -10,4 +10,4 @@ const mapStateToProps = (state: RootState) => ({
   playerCurrentVideo: state.audioplayer.playerCurrentVideo,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);
+export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayer);

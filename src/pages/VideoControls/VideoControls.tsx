@@ -1,12 +1,12 @@
 import { Flex, IconButton, Spinner, Text } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import AudioProgressBar from "../../components/common/AudioPlayer/PlayerControls/AudioProgressBar";
+import AudioProgressBar from "../../components/common/VideoPlayer/PlayerControls/AudioProgressBar";
 import { RiReplay10Fill, RiForward10Fill } from "react-icons/ri";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 
 const SEEK_TIME = 10;
 
-export const VideoPlayer: React.FunctionComponent<any> = (props) => {
+export const VideoControls: React.FunctionComponent<any> = (props) => {
   const videoPlayerRef = useRef<HTMLVideoElement>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [videoLoading, setVideoLoading] = useState<boolean>(false);
@@ -48,7 +48,7 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
       mt={props.isOpen ? 0 : 4}
       alignItems={"center"}
     >
-      <Flex h={props.isOpen ? "60vh" : "60px"} justifyContent={"center"}>
+      <Flex h={props.isOpen ? "58vh" : "60px"} justifyContent={"center"}>
         <video
           ref={videoPlayerRef}
           controlsList="nodownload noremoteplayback"

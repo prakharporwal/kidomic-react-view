@@ -49,12 +49,11 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
           ref={videoPlayerRef}
           controlsList="nodownload noremoteplayback"
           preload="metadata"
-          poster={props.poster ?? "/placeholder.jpeg"}
+          poster={props.poster ?? "/placeholder.png"}
           src={
             props.playerCurrentAudio ||
             "https://s3.ap-south-1.amazonaws.com/kid.sociohub.live/strapi/media/Simba_the_brave_lion_Made_with_Clipchamp_41e0e6ac96.mp4"
           }
-          
           onTimeUpdate={(e) => {
             setCurrentTime(e.currentTarget.currentTime);
           }}

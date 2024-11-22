@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Link, Text, chakra } from "@chakra-ui/react";
+import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
 import { StoryReponse } from "../../../apimodels/homepage";
 
@@ -9,6 +9,12 @@ interface IProps {
 export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
   const isKOriginal = story.author?.toLowerCase() === "Kidomic".toLowerCase();
   //   const isTrending = story.is_trending;
+
+  const imageUrl =
+    story?.thumbnail?.formats?.small?.url ||
+    story?.thumbnail?.formats?.thumbnail?.url ||
+    "/placeholder.png";
+
   return (
     <Link as={ReactLink} to={"/story/" + story.documentId}>
       <Flex
@@ -50,9 +56,7 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
             fit="cover"
             height={"100%"}
             w={"100%"}
-            src={
-              story?.thumbnail_url ? story?.thumbnail_url : "/placeholder.jpeg"
-            }
+            src={imageUrl}
             alt="avatar"
           />
         </Box>

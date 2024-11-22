@@ -70,7 +70,7 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
         m={4}
         fit="cover"
         src={
-          video.cover_image?.url ? video.cover_image?.url : "/placeholder.jpeg"
+          video.cover_image?.url ? video.cover_image?.url : "/placeholder.png"
         }
         alt="avatar"
       />

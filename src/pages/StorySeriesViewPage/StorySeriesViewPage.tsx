@@ -11,10 +11,9 @@ import { useParams } from "react-router";
 import LoadingShell from "../../components/ui/LoadingShell";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
 import EpisodeList from "./EpisodeList";
-import { StoryReponse } from "../../apimodels/homepage";
 import { useQuery, gql } from "@apollo/client";
-import ErrorBoundary from "../../components/ErrorBoundary";
 import "./style.css";
+import { lazy } from "react";
 
 const GQL_QUERY_GET_STORIES = gql`
   query StoryDetails($documentId: ID!) {
@@ -67,16 +66,10 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
       </div>
     );
   }
+
   if (error) {
-    return (
-      <ErrorBoundary>
-        <div className="page">
-          <Text color={"red.600"} fontSize={"lg"} fontWeight={"bold"}>
-            Something Went Wrong
-          </Text>
-        </div>
-      </ErrorBoundary>
-    );
+    const ErrorBox = lazy(() => import("../ErrorBox"));
+    return <ErrorBox />;
   }
 
   // center play/pause icon
@@ -86,8 +79,10 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
       : FiPlayCircle;
 
   const story = data.story;
-  const { medium, thumbnail } = story.thumbnail?.formats;
-  const imageUrl = medium?.url || thumbnail?.url || "/placeholder.jpeg";
+  const imageUrl =
+    story?.thumbnail?.formats?.medium?.url ||
+    story?.thumbnail?.formats?.thumbnail?.url ||
+    "/placeholder.png";
 
   if (!story) {
     return (

@@ -19,7 +19,7 @@ export const SquareImage: React.FunctionComponent<IProps> = ({
           fit="cover"
           height={"100%"}
           w={"100%"}
-          src={src || "/placeholder.jpeg"}
+          src={src || "/placeholder.png"}
           alt={alt || "sqr img"}
         />
       </Box>

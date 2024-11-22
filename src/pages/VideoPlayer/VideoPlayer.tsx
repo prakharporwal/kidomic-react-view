@@ -42,8 +42,17 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
   const iconSize = props.isOpen ? 32 : 28;
   const { name, image, uri: audioUri } = props.playerCurrentVideo;
   return (
-    <Flex flexDirection={props.isOpen ? "column" : "row"} gap={4} mt={4}>
-      <Flex h={props.isOpen ? "" : "60px"} justifyContent={"center"}>
+    <Flex
+      flexDirection={props.isOpen ? "column" : "row"}
+      gap={4}
+      mt={4}
+      alignItems={"center"}
+    >
+      <Flex
+        h={props.isOpen ? "" : "60px"}
+        justifyContent={"center"}
+        maxH={"65vh"}
+      >
         <video
           ref={videoPlayerRef}
           controlsList="nodownload noremoteplayback"
@@ -93,7 +102,11 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
           width={props.isOpen ? "90vw" : "80vw"}
         >
           {name && (
-            <Text fontSize={"md"} color={"white"}>
+            <Text
+              fontSize={props.isOpen ? "lg" : "md"}
+              color={"white"}
+              noOfLines={2}
+            >
               {props.playerCurrentVideo.name}
             </Text>
           )}

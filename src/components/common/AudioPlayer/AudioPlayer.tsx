@@ -15,7 +15,7 @@ export const AudioPlayer: React.FunctionComponent<any> = (props) => {
         height: isOpen ? "calc(100vh - 56px)" : "",
         borderRadius: "12px 12px 0 0",
         borderTop: "1px solid white",
-        transition: "width 2s",
+        transition: "height 0.3s",
       }}
       onClick={onOpen}
     >

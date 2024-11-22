@@ -8,3 +8,7 @@ Great Article
 - https://css-tricks.com/lets-create-a-custom-audio-player/
 
 - https://blog.shahednasser.com/how-to-style-an-audio-element/
+
+
+Making video/audio streamable ->
+- https://superuser.com/questions/1753260/what-makes-a-mp4-streamable

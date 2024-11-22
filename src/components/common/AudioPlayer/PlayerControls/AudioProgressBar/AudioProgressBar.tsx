@@ -45,5 +45,5 @@ export const AudioProgressBar: React.FunctionComponent<IProps> = ({
 };
 
 const getProgress = (current: number, total: number) => {
-  return Math.floor((current / total) * 100);
+  return (current / total) * 100;
 };

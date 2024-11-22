@@ -18,9 +18,23 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
         alignItems="center"
         justifyContent="center"
         direction={"column"}
-        width={"32"}
+        color={"white"}
+        _hover={{ transform: "translateY(2px)" }}
+        _active={{
+          border: "2px solid white",
+          borderRadius: "12px",
+          backgroundColor: "white",
+          color: "black",
+          lineHeight: "40px",
+        }}
       >
-        <Box w={32} h={32} position={"relative"}>
+        <Box
+          w={{ base: 32, md: 40 }}
+          h={{ base: 32, md: 40 }}
+          borderRadius={12}
+          overflow={"hidden"}
+          position={"relative"}
+        >
           {/* {isTrending && (
             <Box
               borderBottomLeftRadius={8}
@@ -53,7 +67,6 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
           display="block"
           fontSize="md"
           fontWeight={"bold"}
-          color="white"
           overflowWrap={"break-word"}
           noOfLines={2}
           textAlign={"center"}

@@ -51,10 +51,10 @@ export default function WebHeader() {
       <Flex
         position={"absolute"}
         display={"block"}
-        top={{ md: 0, lg: 14 }}
+        top={{ base: 0, lg: 14 }}
         textAlign={"center"}
         color={"white"}
-        zIndex={{ md: -1000, lg: 1000 }}
+        zIndex={{ base: -10, lg: 1000 }}
         background={"red.500"}
         height={6}
         width={"100vw"}

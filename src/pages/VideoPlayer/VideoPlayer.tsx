@@ -39,7 +39,7 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
     }
   }, [props.playerCurrentAudio, playing]);
 
-  const iconSize = props.isOpen ? 36 : 28;
+  const iconSize = props.isOpen ? 32 : 28;
 
   return (
     <Flex flexDirection={props.isOpen ? "column" : "row"} gap={4} mt={4}>
@@ -104,7 +104,7 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
           <Flex className="play-controls-buttons" flexDirection={"row"} gap={2}>
             {props.isOpen && (
               <IconButton
-                icon={<RiReplay10Fill color="white" size={20} />}
+                icon={<RiReplay10Fill color="black" size={24} />}
                 aria-label="previous audio"
                 onClick={() => {
                   seekVideo(-1 * SEEK_TIME);
@@ -117,7 +117,7 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
                 props.toggleAudioPlay(!props.playing);
                 e.stopPropagation();
               }}
-              icon={<PlayIconComp color="white" size={iconSize} />}
+              icon={<PlayIconComp color="black" size={iconSize} />}
               aria-label="play/pause"
             />
             {props.isOpen && (
@@ -125,8 +125,8 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
                 icon={
                   <RiForward10Fill
                     direction={"right"}
-                    color="white"
-                    size={20}
+                    color="black"
+                    size={24}
                   />
                 }
                 aria-label="next audio"

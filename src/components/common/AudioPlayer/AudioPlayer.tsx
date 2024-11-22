@@ -1,13 +1,4 @@
-import {
-  Box,
-  Drawer,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerOverlay,
-  IconButton,
-  useDisclosure,
-} from "@chakra-ui/react";
-import PlayerControls from "./PlayerControls";
+import { Box, IconButton, useDisclosure } from "@chakra-ui/react";
 import { useRef } from "react";
 import VideoPlayer from "../../../pages/VideoPlayer";
 import { FiChevronDown } from "react-icons/fi";
@@ -34,7 +25,7 @@ export const AudioPlayer: React.FunctionComponent<any> = (props) => {
             icon={<FiChevronDown size={24} color="white" />}
             aria-label="open full player"
             ref={btnRef}
-            variant="outline"
+            variant="ghost"
             onClick={(e) => {
               console.log("closing");
               onClose();

@@ -15,7 +15,7 @@ export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
       bg={"#292929"}
       w={"calc(100vw - 32px)"}
       onClick={() => {
-        props.updatePlayerCurrentAudio(video_uri?.url ?? "");
+        if (video_uri?.url) props.updatePlayerCurrentAudio(video_uri?.url);
       }}
     >
       <Flex flexDirection={"row"} gap={2} justifyContent={"flex-start"}>

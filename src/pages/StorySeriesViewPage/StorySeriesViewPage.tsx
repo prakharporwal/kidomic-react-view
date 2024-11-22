@@ -60,10 +60,6 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
     variables: { documentId: storyId },
   });
 
-  // useEffect(() => {
-  //   setStory(data?.story);
-  // }, [storyId]);
-
   if (loading) {
     return (
       <div className="page">
@@ -75,7 +71,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
     return (
       <ErrorBoundary>
         <div className="page">
-          <Text color={"red.600"} fontSize={"lg"}>
+          <Text color={"red.600"} fontSize={"lg"} fontWeight={"bold"}>
             Something Went Wrong
           </Text>
         </div>
@@ -83,16 +79,22 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
     );
   }
 
-  console.log("data: ", data?.story);
-  const story = data.story;
   // center play/pause icon
   const PlayIcon =
     isPlayingSongPage("audioUrl", props.playerCurrentAudio) && playing
       ? FiPauseCircle
       : FiPlayCircle;
 
+  const story = data.story;
+  const { medium, thumbnail } = story.thumbnail?.formats;
+  const imageUrl = medium?.url || thumbnail?.url || "/placeholder.jpeg";
+
   if (!story) {
-    return null;
+    return (
+      <Text color={"red.600"} fontSize={"lg"} fontWeight={"bold"}>
+        No Data
+      </Text>
+    );
   }
 
   const isKOriginal: boolean =
@@ -106,11 +108,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
         h={80}
         m={4}
         fit="cover"
-        src={
-          story.thumbnail?.formats?.medium?.url
-            ? story.thumbnail?.formats?.medium?.url
-            : "/placeholder.jpeg"
-        }
+        src={imageUrl}
         alt="cover img"
       />
       <Box mx="8" gap={"2"}>

@@ -8,6 +8,8 @@ interface IProps {
 
 export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
   const { title, description, video_uri, cover_image } = props.episode;
+  const { medium, thumbnail } = cover_image?.formats;
+  const imageUrl = medium?.url || thumbnail?.url;
 
   return (
     <Card
@@ -19,11 +21,7 @@ export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
       }}
     >
       <Flex flexDirection={"row"} gap={2} justifyContent={"flex-start"}>
-        <SquareImage
-          alt={"episode image"}
-          src={cover_image?.formats?.medium.url}
-          size={24}
-        />
+        <SquareImage alt={"episode image"} src={imageUrl} size={24} />
         <Flex flexDirection={"column"} gap={1} w={"full"}>
           <Text fontSize={"md"} color={"white"}>
             {title}

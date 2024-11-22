@@ -11,11 +11,11 @@ export const EpisodeItem: React.FunctionComponent<IProps> = ({ episode }) => {
 
   return (
     <Link as={ReactLink} to={`/video/${episode.documentId}`}>
-      <Card p={2} bg={"#292929"}>
+      <Card p={2} bg={"#292929"} w={"calc(100vw - 32px)"}>
         <Flex flexDirection={"row"} gap={2} justifyContent={"flex-start"}>
           <SquareImage
             alt={"episode image"}
-            src={episode.thumbnail_url}
+            src={episode?.cover_image?.formats?.medium.url}
             size={24}
           />
           <Flex flexDirection={"column"} gap={1} w={"full"}>

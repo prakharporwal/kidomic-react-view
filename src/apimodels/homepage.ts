@@ -43,5 +43,5 @@ export type ImageModel = {
   mime: string;
   ext: string;
   url?: string;
-  format?: any;
+  formats?: any;
 };

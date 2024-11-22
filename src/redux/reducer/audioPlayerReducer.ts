@@ -17,16 +17,16 @@ const audioplayerSlice = createSlice({
   initialState: initialState,
   reducers: {
     toggleAudioPlay: (state, action) => {
-      console.log(state.playing);
       state.playing = action.payload.playing;
     },
     updatePlayerCurrentAudio: (state, action) => {
-      console.log(action);
+      state.playing = false;
       state.playerCurrentAudio = action.payload.playerCurrentAudio;
       window.localStorage.setItem(
         "playerCurrentAudio",
         action.payload.playerCurrentAudio
       );
+      state.playing = true;
     },
   },
 });

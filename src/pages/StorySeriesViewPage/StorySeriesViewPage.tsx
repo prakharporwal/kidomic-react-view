@@ -24,6 +24,7 @@ const GQL_QUERY_GET_STORIES = gql`
       description
       author
       videos {
+        documentId
         title
         description
         cover_image {

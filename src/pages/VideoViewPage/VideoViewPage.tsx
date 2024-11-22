@@ -1,9 +1,4 @@
-import {
-  IconButton,
-  Image,
-  Spacer,
-  Text
-} from "@chakra-ui/react";
+import { IconButton, Image, Spacer, Text } from "@chakra-ui/react";
 import "./style.css";
 
 import { useEffect, useState } from "react";
@@ -15,7 +10,6 @@ import {
   FiPauseCircle,
   FiPlayCircle,
 } from "react-icons/fi";
-import VideoPlayer from "../VideoPlayer";
 
 const DEFAULT_AUDIO_URL = "/audio/audio-masha.mp3";
 
@@ -111,9 +105,7 @@ export const StoryViewPage: React.FunctionComponent<any> = (props) => {
               onClick={() => {
                 // todo: use id for comparison
                 if (!isPlayingSongPage(audioUrl, props.playerCurrentAudio)) {
-                  props.toggleAudioPlay(false);
                   props.updatePlayerCurrentAudio(audioUrl);
-                  props.toggleAudioPlay(true);
                 } else {
                   // else just pause and play the current audio
                   props.toggleAudioPlay(!playing);

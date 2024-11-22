@@ -22,7 +22,13 @@ export type VideoResponse = {
   documentId: string;
   description: string;
   cover_image?: ImageModel;
-  video_uri?: any;
+  video_uri?: {
+    url: string;
+    previewUrl?: string;
+    mime: string;
+    documentId: string;
+    alternativeText?: string;
+  };
   thumbnail_url: string;
 };
 

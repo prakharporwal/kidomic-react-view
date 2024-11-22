@@ -44,15 +44,11 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
   return (
     <Flex
       flexDirection={props.isOpen ? "column" : "row"}
-      gap={4}
-      mt={4}
+      gap={2}
+      mt={props.isOpen ? 0 : 4}
       alignItems={"center"}
     >
-      <Flex
-        h={props.isOpen ? "" : "60px"}
-        justifyContent={"center"}
-        maxH={"65vh"}
-      >
+      <Flex h={props.isOpen ? "60vh" : "60px"} justifyContent={"center"}>
         <video
           ref={videoPlayerRef}
           controlsList="nodownload noremoteplayback"

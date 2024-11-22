@@ -1,4 +1,4 @@
-import { Flex, IconButton, Spinner } from "@chakra-ui/react";
+import { Flex, IconButton, Spinner, Text } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import AudioProgressBar from "../../components/common/AudioPlayer/PlayerControls/AudioProgressBar";
 import { RiReplay10Fill, RiForward10Fill } from "react-icons/ri";
@@ -40,16 +40,16 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
   }, [props.playerCurrentVideo.uri, playing]);
 
   const iconSize = props.isOpen ? 32 : 28;
-
+  const { name, image, uri: audioUri } = props.playerCurrentVideo;
   return (
     <Flex flexDirection={props.isOpen ? "column" : "row"} gap={4} mt={4}>
-      <Flex h={props.isOpen ? "" : "60px"}>
+      <Flex h={props.isOpen ? "" : "60px"} justifyContent={"center"}>
         <video
           ref={videoPlayerRef}
           controlsList="nodownload noremoteplayback"
           preload="metadata"
-          poster={props.playerCurrentVideo.image}
-          src={props.playerCurrentVideo.uri}
+          poster={image}
+          src={audioUri}
           onTimeUpdate={(e) => {
             setCurrentTime(e.currentTarget.currentTime);
           }}
@@ -92,6 +92,11 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
           justifyContent={"space-between"}
           width={props.isOpen ? "90vw" : "80vw"}
         >
+          {name && (
+            <Text fontSize={"md"} color={"white"}>
+              {props.playerCurrentVideo.name}
+            </Text>
+          )}
           <AudioProgressBar
             currentTime={currentTime}
             duration={

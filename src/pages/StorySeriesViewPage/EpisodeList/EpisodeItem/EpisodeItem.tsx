@@ -21,6 +21,7 @@ export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
           props.updatePlayerCurrentVideo({
             uri: video_uri?.url,
             image: extractImageUrl(cover_image),
+            name: title,
           });
       }}
     >

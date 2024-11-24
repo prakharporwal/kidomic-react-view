@@ -2,6 +2,7 @@ export type HomeRecommendationResponse = {
   id: string;
   title: string;
   documentId: string;
+  viewType?: string;
   stories?: StoryReponse[];
 };
 

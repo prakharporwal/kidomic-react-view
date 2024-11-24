@@ -1,25 +1,17 @@
 import { List, ListItem } from "@chakra-ui/react";
-import StoryCard from "../StoryCard";
-import { StoryReponse } from "../../../apimodels/homepage";
-import { VerticalRectangleHorizontalList } from "./viewType/VerticalRectangleHorizontalList";
+import { StoryReponse } from "../../../../../apimodels/homepage";
 
 interface IProps {
   storyList: StoryReponse[] | undefined;
   viewType?: string;
 }
 
-export const RecommendedStoryHorizontalList: React.FunctionComponent<
+export const VerticalRectangleHorizontalList: React.FunctionComponent<
   IProps
-> = ({ storyList, viewType }) => {
+> = ({ storyList }) => {
   if (!storyList) {
     return null;
   }
-
-  // switch (viewType) {
-  //   case "VERTICAL_RECTANGLE":
-  //     return <VerticalRectangleHorizontalList storyList={storyList} />;
-  // }
-
   return (
     <List
       display={"flex"}
@@ -42,10 +34,10 @@ export const RecommendedStoryHorizontalList: React.FunctionComponent<
         },
       }}
     >
-      {storyList.map((story: any) => {
+      {storyList.map((story: StoryReponse) => {
         return (
           <ListItem key={story.id}>
-            <StoryCard story={story} />
+            <div>{story.title}</div>
           </ListItem>
         );
       })}

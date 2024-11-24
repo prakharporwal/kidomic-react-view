@@ -4,6 +4,9 @@ export function extractImageUrl(data: ImageModel | undefined) {
   if (!data) {
     return "";
   }
+
+  if (typeof data === "string") return data;
+
   return (
     data?.formats?.medium?.url ||
     data?.url ||

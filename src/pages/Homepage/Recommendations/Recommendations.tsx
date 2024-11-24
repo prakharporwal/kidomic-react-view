@@ -33,7 +33,6 @@ export const Recommendations = () => {
 
   if (loading) return <LoadingShell />;
 
-  console.log("data", data);
   const recommendations = data;
 
   if (!recommendations) return null;
@@ -57,6 +56,7 @@ export const Recommendations = () => {
             </Text>
             <RecommendedStoryHorizontalList
               storyList={recommendation.stories}
+              viewType={recommendation.viewType}
             />
           </chakra.div>
         );

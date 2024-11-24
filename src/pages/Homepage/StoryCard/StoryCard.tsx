@@ -60,7 +60,7 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
               <Image w={4} h={4} src={"/logo.png"} />
             </Box>
           )}
-          <SquareImage data={story.thumbnail} />
+          <SquareImage data={story.thumbnail_url} />
         </Box>
         <Text
           display="block"

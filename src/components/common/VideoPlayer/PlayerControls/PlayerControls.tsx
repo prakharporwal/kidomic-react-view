@@ -63,10 +63,10 @@ export const PlayerControls: React.FunctionComponent<any> = ({
         </Flex>
       ) : (
         <div className="actions">
-          <AudioProgressBar
+          {/* <AudioProgressBar
             currentTime={currentTime}
             duration={playerRef.current ? playerRef.current.duration : 0}
-          />
+          /> */}
           <div className="play-controls-buttons">
             {/* <IconButton
               icon={<FiArrowLeft color="white" size={24} />}

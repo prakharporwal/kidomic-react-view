@@ -31,11 +31,9 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
               onClose();
               e.stopPropagation();
             }}
-            animation={`translate infinite 20s linear`}
           ></IconButton>
         </Box>
       )}
-      {/* <PlayerControls /> */}
       <VideoControls isOpen={isOpen} />
       {/* <Drawer
         isOpen={false}

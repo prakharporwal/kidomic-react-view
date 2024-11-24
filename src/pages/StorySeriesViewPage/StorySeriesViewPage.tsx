@@ -135,7 +135,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
           <Button
             rounded={"md"}
             size={"md"}
-            colorScheme={"brand"}
+            color={"black"}
             onClick={() => {
               // todo: use id for comparison
               // if (!isPlayingSongPage(audioUrl, props.playerCurrentAudio)) {
@@ -147,7 +147,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
               //   props.toggleAudioPlay(!playing);
               // }
             }}
-            leftIcon={<PlayIcon color="white" size={24} />}
+            leftIcon={<PlayIcon color="black" size={24} />}
             title={"play story"}
             aria-label="play/pause"
           >

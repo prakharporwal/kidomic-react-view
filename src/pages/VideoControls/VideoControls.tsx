@@ -48,11 +48,16 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
       mt={props.isOpen ? 0 : 4}
       alignItems={"center"}
     >
-      <Flex h={props.isOpen ? "58vh" : "60px"} justifyContent={"center"}>
+      <Flex
+        h={props.isOpen ? "58vh" : "60px"}
+        w={props.isOpen ? "58vh" : "100px"}
+        justifyContent={"center"}
+      >
         <video
           ref={videoPlayerRef}
           controlsList="nodownload noremoteplayback"
           preload="metadata"
+          height={"100%"}
           poster={image}
           src={audioUri}
           onTimeUpdate={(e) => {
@@ -102,8 +107,9 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
               fontSize={props.isOpen ? "lg" : "md"}
               color={"white"}
               noOfLines={2}
+              width={"100px"}
             >
-              {props.playerCurrentVideo.name}
+              {name}
             </Text>
           )}
           <AudioProgressBar
@@ -111,6 +117,7 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
             duration={
               videoPlayerRef.current ? videoPlayerRef.current.duration : 0
             }
+            isPlayerOpen={props.isOpen}
           />
           <Flex className="play-controls-buttons" flexDirection={"row"} gap={2}>
             {props.isOpen && (

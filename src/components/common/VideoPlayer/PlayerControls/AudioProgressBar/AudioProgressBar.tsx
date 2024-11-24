@@ -1,16 +1,18 @@
 import { useMemo } from "react";
-import { Text } from "@chakra-ui/react";
-import "./style.css";
+import { Text, chakra } from "@chakra-ui/react";
 import { formatTime } from "../../../../../utils/timeutils/formatTime";
+import "./style.css";
 
 interface IProps {
   currentTime: number;
   duration: number;
+  isPlayerOpen: boolean;
 }
 
 export const AudioProgressBar: React.FunctionComponent<IProps> = ({
   currentTime,
   duration,
+  isPlayerOpen,
 }) => {
   const formattedDuration = useMemo(() => formatTime(duration), [duration]);
   const formattedCurrentTime = formatTime(currentTime);
@@ -20,27 +22,34 @@ export const AudioProgressBar: React.FunctionComponent<IProps> = ({
     return null;
   }
   return (
-    <div className="progress-bar">
-      <div className="slider">
-        <div
+    <chakra.div
+      className="progress-bar"
+      width={{ base: isPlayerOpen ? "100%" : "", md: "100%" }}
+    >
+      <chakra.div
+        className="slider"
+        display={{ base: isPlayerOpen ? "block" : "none", md: "block" }}
+      >
+        <chakra.div
           className="slider-thumb"
+          display={{ base: isPlayerOpen ? "block" : "none", md: "block" }}
           style={{ width: getProgress(currentTime, duration) + "%" }}
-        ></div>
-      </div>
+        ></chakra.div>
+      </chakra.div>
       <Text
         as={"span"}
         className="timer-text"
         color={"white"}
         fontSize={"sm"}
         textAlign={"end"}
-        width={"92px"}
+        width={"90px"}
         overflow={"hidden"}
       >
         {formattedCurrentTime}
         {" / "}
         {formattedDuration}
       </Text>
-    </div>
+    </chakra.div>
   );
 };
 

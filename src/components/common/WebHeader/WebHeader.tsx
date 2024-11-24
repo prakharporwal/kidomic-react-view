@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box, Flex } from "@chakra-ui/react";
-import { FiChevronLeft } from "react-icons/fi";
+import { FiChevronLeft, FiMenu } from "react-icons/fi";
 import AppLogo from "./AppLogo";
 function shouldShowBackButton(path: string): boolean {
   console.log(path);
@@ -22,7 +22,6 @@ export default function WebHeader() {
         position={"fixed"}
         height={"14"}
         w={"full"}
-        bg={"black"}
         zIndex={1000}
         flexDirection={"row"}
         justifyContent={"flex-start"}
@@ -30,10 +29,9 @@ export default function WebHeader() {
         gap={1}
       >
         {showBackButton ? (
-          <Box>
+          <Box mx={2}>
             <FiChevronLeft
-              color="white"
-              strokeWidth={1.2}
+              strokeWidth={1.6}
               size={32}
               onClick={() => {
                 console.log(location);
@@ -50,7 +48,7 @@ export default function WebHeader() {
       {/* Fix: make desktop compatible responsive: compatible warning */}
       <Flex
         position={"absolute"}
-        display={"block"}
+        display={{ base: "none", lg: "block" }}
         top={{ base: 0, lg: 14 }}
         textAlign={"center"}
         color={"white"}

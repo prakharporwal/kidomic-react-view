@@ -34,8 +34,6 @@ export const Recommendations = () => {
     return <ErrorBox />;
   }
 
-  console.log(data);
-
   const recommendations = data.homeRecommendations;
   return (
     <section className="recommendation-section">
@@ -50,7 +48,6 @@ export const Recommendations = () => {
               pl={2}
               pr={4}
               mb={4}
-              color={"InfoBackground"}
               fontWeight={"bold"}
               fontSize={"xl"}
             >

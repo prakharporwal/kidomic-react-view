@@ -14,7 +14,8 @@ export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
   return (
     <Card
       p={2}
-      bg={"#292929"}
+      background={"#3a3a3a"}
+      color={"white"}
       w={"calc(100vw - 32px)"}
       onClick={() => {
         if (video_uri?.url)
@@ -32,15 +33,8 @@ export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
           </Box>
         </Flex>
         <Flex flexDirection={"column"} gap={1} w={"full"}>
-          <Text fontSize={"md"} color={"white"}>
-            {title}
-          </Text>
-          <Text
-            fontSize={"sm"}
-            color={"white"}
-            noOfLines={2}
-            overflowWrap={"break-word"}
-          >
+          <Text fontSize={"md"}>{title}</Text>
+          <Text fontSize={"sm"} noOfLines={2} overflowWrap={"break-word"}>
             {description}
           </Text>
         </Flex>

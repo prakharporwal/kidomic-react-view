@@ -33,7 +33,7 @@ export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
   return (
     <Flex
       w={"100vw"}
-      bg="#191919"
+      bg="#1f1f1f"
       mt={1}
       mb={4}
       alignItems="center"

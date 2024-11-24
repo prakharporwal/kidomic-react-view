@@ -107,12 +107,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
         alt="cover img"
       />
       <Box mx="8" gap={"2"}>
-        <Text
-          color="white"
-          fontSize={"2xl"}
-          fontWeight={"bold"}
-          textAlign={"center"}
-        >
+        <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"}>
           {story.title}
         </Text>
         {isKOriginal && (
@@ -123,18 +118,10 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
             gap={1}
           >
             <Image src="/logo.png" alt="Logo" w={4} h={4} />
-            <chakra.span fontSize="sm" fontWeight={""} color="white">
-              {"Originals"}
-            </chakra.span>
+            <chakra.span fontSize="sm">{"Originals"}</chakra.span>
           </Flex>
         )}
-        <Text
-          color="white"
-          fontSize={"sm"}
-          my={2}
-          textAlign={"justify"}
-          noOfLines={3}
-        >
+        <Text fontSize={"sm"} my={2} textAlign={"justify"} noOfLines={3}>
           {story.description}
         </Text>
       </Box>
@@ -149,7 +136,6 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
             rounded={"md"}
             size={"md"}
             colorScheme={"brand"}
-            color={"white"}
             onClick={() => {
               // todo: use id for comparison
               // if (!isPlayingSongPage(audioUrl, props.playerCurrentAudio)) {

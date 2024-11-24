@@ -18,8 +18,7 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
         alignItems="center"
         justifyContent="center"
         direction={"column"}
-        color={"white"}
-        _hover={{ transform: "translateY(2px)" }}
+        _hover={{ transform: "scale(1.1)", transition: "transform 0.3s" }}
         _active={{
           border: "2px solid white",
           borderRadius: "12px",

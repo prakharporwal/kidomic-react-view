@@ -34,7 +34,6 @@ export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
     <Flex
       w={"100vw"}
       bg="#1f1f1f"
-      mt={1}
       mb={4}
       alignItems="center"
       justifyContent="center"
@@ -62,7 +61,6 @@ export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
                     alt="carousel image"
                     boxSize="full"
                     width={"full"}
-                    aspectRatio={"16/9"}
                     backgroundSize="cover"
                   />
                 </Link>

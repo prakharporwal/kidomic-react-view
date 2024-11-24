@@ -127,12 +127,8 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
       </Box>
       <div className="video-controls" style={{ marginTop: "16px" }}>
         <div className="action-buttons">
-          {/* <IconButton
-              size={"lg"}
-              icon={<FiChevronLeft color="white" size={30} />}
-              aria-label="back"
-            /> */}
-          <Button
+          {/* Todo make a play story button functional */}
+          {/* <Button
             rounded={"md"}
             size={"md"}
             color={"black"}
@@ -142,7 +138,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
             aria-label="play/pause"
           >
             Play Story
-          </Button>
+          </Button> */}
         </div>
       </div>
       {story.videos && <EpisodeList episodes={story.videos} />}

@@ -1,44 +1,46 @@
 import { Text, chakra } from "@chakra-ui/react";
 import RecommendedStoryHorizontalList from "../RecommendedStoryHorizontalList";
 import { HomeRecommendationResponse } from "../../../apimodels/homepage";
-import { useQuery, gql } from "@apollo/client";
 import LoadingShell from "../../../components/ui/LoadingShell";
-import { lazy } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
 
-const GQL_QUERY_GET_HOME_RECOMMENDATIONS = gql`
-  query HomeRecommendations {
-    homeRecommendations {
-      documentId
-      title
-      stories {
-        documentId
-        title
-        author
-        thumbnail {
-          formats
-          mime
-        }
-      }
-    }
-  }
-`;
-
 export const Recommendations = () => {
-  const { loading, error, data } = useQuery(GQL_QUERY_GET_HOME_RECOMMENDATIONS);
+  const [loading, setLoading] = useState<boolean>();
+  const [data, setData] = useState<HomeRecommendationResponse[]>([]);
+
+  function fetchRecommendations() {
+    setLoading(true);
+
+    fetch(
+      process.env.REACT_APP_PROD_API + "/v1/home-recommendations?populate=*"
+    )
+      .then((res) => {
+        if (!res.ok) throw new Error("failed fetching recommendations");
+        return res.json();
+      })
+      .then((data) => {
+        setData(data.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  useEffect(() => {
+    fetchRecommendations();
+  }, []);
 
   if (loading) return <LoadingShell />;
 
-  if (error) {
-    const ErrorBox = lazy(() => import("../../ErrorBox"));
-    return <ErrorBox />;
-  }
+  console.log("data", data);
+  const recommendations = data;
 
-  const recommendations = data.homeRecommendations;
+  if (!recommendations) return null;
   return (
     <section className="recommendation-section">
       {recommendations.map((recommendation: HomeRecommendationResponse) => {
-        if (recommendation.stories.length === 0) {
+        if (recommendation.stories && recommendation.stories.length === 0) {
           return null; // skip rendering if no videos
         }
         return (

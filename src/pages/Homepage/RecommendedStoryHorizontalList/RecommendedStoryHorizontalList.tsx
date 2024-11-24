@@ -3,12 +3,15 @@ import StoryCard from "../StoryCard";
 import { StoryReponse } from "../../../apimodels/homepage";
 
 interface IProps {
-  storyList: StoryReponse[];
+  storyList: StoryReponse[] | undefined;
 }
 
 export const RecommendedStoryHorizontalList: React.FunctionComponent<
   IProps
 > = ({ storyList }) => {
+  if (!storyList) {
+    return null;
+  }
   return (
     <List
       display={"flex"}

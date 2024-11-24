@@ -2,7 +2,7 @@ export type HomeRecommendationResponse = {
   id: string;
   title: string;
   documentId: string;
-  stories: StoryReponse[];
+  stories?: StoryReponse[];
 };
 
 export type StoryReponse = {

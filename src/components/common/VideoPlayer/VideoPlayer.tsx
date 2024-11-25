@@ -10,7 +10,7 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
   const btnRef = useRef<HTMLButtonElement>(null);
   return (
     <div
-      className="audio-player"
+      className="video-player"
       style={{
         display: props.playerCurrentVideo.uri ? "block" : "none",
         height: isOpen ? "calc(100vh)" : "",

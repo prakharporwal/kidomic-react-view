@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import AudioProgressBar from "../../components/common/VideoPlayer/PlayerControls/AudioProgressBar";
 import { RiReplay10Fill, RiForward10Fill } from "react-icons/ri";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
-import { ga4Utils } from "../../utils/GoogleAnalyticsUtils";
 
 const SEEK_TIME = 10;
 
@@ -50,7 +49,7 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
       alignItems={"center"}
     >
       <Flex
-        h={props.isOpen ? "64vh" : "60px"}
+        h={props.isOpen ? "66vh" : "60px"}
         w={props.isOpen ? "94vw" : "100px"}
         justifyContent={"center"}
       >
@@ -95,10 +94,10 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
       ) : (
         <Flex
           flexDirection={props.isOpen ? "column" : "row"}
-          gap={4}
           alignItems={"center"}
           justifyContent={"space-between"}
           width={props.isOpen ? "90vw" : "80vw"}
+          gap={2}
         >
           {name && (
             <Text

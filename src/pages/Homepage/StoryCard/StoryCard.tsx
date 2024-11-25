@@ -29,7 +29,7 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
       >
         <Box
           w={{ base: 32, md: 40 }}
-          h={{ base: 32, md: 40 }}
+          h={{ base: 44, md: 52 }}
           borderRadius={12}
           overflow={"hidden"}
           position={"relative"}

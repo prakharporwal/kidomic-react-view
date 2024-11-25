@@ -10,7 +10,8 @@ interface IProps {
 }
 
 export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
-  const { title, description, video_uri, cover_image } = props.episode;
+  const { title, description, documentId, video_uri, cover_image } =
+    props.episode;
 
   return (
     <Card
@@ -21,6 +22,7 @@ export const EpisodeItem: React.FunctionComponent<IProps> = (props) => {
       onClick={() => {
         if (video_uri?.url)
           props.updatePlayerCurrentVideo({
+            videoId: documentId,
             uri: video_uri?.url,
             image: extractImageUrl(cover_image),
             name: title,

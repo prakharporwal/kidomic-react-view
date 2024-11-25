@@ -14,7 +14,7 @@ export const EpisodeList: React.FunctionComponent<IProps> = ({ episodes }) => {
       </Text>
       {episodes.map((episode: VideoResponse) => {
         return (
-          <ListItem>
+          <ListItem key={episode.documentId}>
             <EpisodeItem episode={episode} />
           </ListItem>
         );

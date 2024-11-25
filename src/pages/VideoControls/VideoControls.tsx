@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import AudioProgressBar from "../../components/common/VideoPlayer/PlayerControls/AudioProgressBar";
 import { RiReplay10Fill, RiForward10Fill } from "react-icons/ri";
 import { FiPauseCircle, FiPlayCircle } from "react-icons/fi";
+import { ga4Utils } from "../../utils/GoogleAnalyticsUtils";
 
 const SEEK_TIME = 10;
 
@@ -40,7 +41,7 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
   }, [props.playerCurrentVideo.uri, playing]);
 
   const iconSize = props.isOpen ? 32 : 28;
-  const { name, image, uri: audioUri } = props.playerCurrentVideo;
+  const { name, videoId, image, uri: audioUri } = props.playerCurrentVideo;
   return (
     <Flex
       flexDirection={props.isOpen ? "column" : "row"}
@@ -54,6 +55,7 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
         justifyContent={"center"}
       >
         <video
+          id={videoId}
           ref={videoPlayerRef}
           controlsList="nodownload noremoteplayback"
           preload="metadata"
@@ -64,7 +66,6 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
             setCurrentTime(e.currentTarget.currentTime);
           }}
           onLoadStart={() => {
-            console.log("loading audio start");
             setVideoLoading(true);
           }}
           onError={(e) => {

@@ -85,11 +85,10 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
     "/placeholder.png";
 
   if (!story) {
-    return (
-      <Text color={"red.600"} fontSize={"lg"} fontWeight={"bold"}>
-        No Data
-      </Text>
+    const ErrorBox = lazy(
+      () => import(/* webpackChunkName: "errorBox" */ "../ErrorBox")
     );
+    return <ErrorBox />;
   }
 
   const isKOriginal: boolean =
@@ -102,7 +101,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
         maxW={96}
         h={80}
         m={4}
-        fit="cover"
+        fit="contain"
         src={imageUrl}
         alt="cover img"
       />

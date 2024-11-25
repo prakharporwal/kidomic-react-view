@@ -50,8 +50,8 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
       alignItems={"center"}
     >
       <Flex
-        h={props.isOpen ? "58vh" : "60px"}
-        w={props.isOpen ? "58vh" : "100px"}
+        h={props.isOpen ? "64vh" : "60px"}
+        w={props.isOpen ? "94vw" : "100px"}
         justifyContent={"center"}
       >
         <video

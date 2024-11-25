@@ -25,18 +25,24 @@ const audioplayerSlice = createSlice({
       state.playing = action.payload.playing;
     },
     updatePlayerCurrentVideo: (state, action) => {
+      // do nothing if same video is clicked
+      if (
+        state.playerCurrentVideo.videoId ===
+        action.payload.playerCurrentVideo.videoId
+      )
+        return;
+
       state.playing = false;
       state.playerCurrentVideo = action.payload.playerCurrentVideo;
       state.playing = true;
 
-      if (action.payload.playing) {
-        const ga4event = {
-          event: "video_play",
-          video_name: state.playerCurrentVideo.name,
-          video_id: state.playerCurrentVideo.videoId,
-        };
-        ga4Utils.push(ga4event);
-      }
+      const ga4event = {
+        event: "video_play",
+        video_name: state.playerCurrentVideo.name,
+        video_id: state.playerCurrentVideo.videoId,
+      };
+      console.log(ga4event);
+      ga4Utils.push(ga4event);
     },
   },
 });

@@ -1,9 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box, Flex } from "@chakra-ui/react";
-import { FiChevronLeft, FiMenu } from "react-icons/fi";
+import { FiChevronLeft } from "react-icons/fi";
 import AppLogo from "./AppLogo";
 function shouldShowBackButton(path: string): boolean {
-  console.log(path);
   switch (path) {
     case "/":
       return false;

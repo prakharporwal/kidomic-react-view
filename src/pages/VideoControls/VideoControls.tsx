@@ -104,7 +104,7 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
               fontSize={props.isOpen ? "lg" : "md"}
               color={"white"}
               noOfLines={2}
-              width={"100px"}
+              width={props.isOpen ? "" : "100px"}
             >
               {name}
             </Text>

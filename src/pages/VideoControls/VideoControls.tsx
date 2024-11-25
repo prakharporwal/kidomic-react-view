@@ -85,9 +85,6 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
           onEnded={() => {
             props.toggleAudioPlay(false);
           }}
-          onClick={() => {
-            props.toggleAudioPlay(!props.playing);
-          }}
         />
       </Flex>
       {videoLoading ? (

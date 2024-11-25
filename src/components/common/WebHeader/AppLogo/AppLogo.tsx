@@ -1,7 +1,9 @@
 import { Link as ReactLink } from "react-router-dom";
-import { Box, Image, Link, Text } from "@chakra-ui/react";
-
-export const AppLogo = () => {
+import { Image, Link } from "@chakra-ui/react";
+interface IProps {
+  dark?: boolean;
+}
+export const AppLogo: React.FunctionComponent<IProps> = ({ dark }) => {
   return (
     <Link
       as={ReactLink}
@@ -12,7 +14,12 @@ export const AppLogo = () => {
       gap={1}
       textUnderlineOffset={0}
     >
-      <Image src="/storyplanet-logo.png" alt="Logo" w={28} h={12} />
+      <Image
+        src={!!dark ? "/dark-storyplanet-logo.png" : "/storyplanet-logo.png"}
+        alt="Logo"
+        w={28}
+        h={12}
+      />
       {/* <Box p={2} px={1} pb={0} border={"1px solid white"} background={"#F80"}>
         <Text
           color="white"

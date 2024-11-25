@@ -1,7 +1,8 @@
-import { Box, IconButton, useDisclosure } from "@chakra-ui/react";
+import { Flex, IconButton, useDisclosure } from "@chakra-ui/react";
 import { useRef } from "react";
 import VideoControls from "../../../pages/VideoControls";
 import { FiChevronDown } from "react-icons/fi";
+import AppLogo from "../WebHeader/AppLogo";
 import "./style.css";
 
 export const VideoPlayer: React.FunctionComponent<any> = (props) => {
@@ -12,17 +13,18 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
       className="audio-player"
       style={{
         display: props.playerCurrentVideo.uri ? "block" : "none",
-        height: isOpen ? "calc(100vh - 56px)" : "",
+        height: isOpen ? "calc(100vh)" : "",
         borderRadius: "12px 12px 0 0",
         borderTop: "1px solid white",
         transition: "height 0.3s",
+        zIndex: 2000,
       }}
       onClick={onOpen}
     >
       {isOpen && (
-        <Box>
+        <Flex mt={4}>
           <IconButton
-            icon={<FiChevronDown size={24} color="white" />}
+            icon={<FiChevronDown size={28} color="white" />}
             aria-label="open full player"
             ref={btnRef}
             variant="ghost"
@@ -32,7 +34,8 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
               e.stopPropagation();
             }}
           ></IconButton>
-        </Box>
+          <AppLogo dark={true} />
+        </Flex>
       )}
       <VideoControls isOpen={isOpen} />
       {/* <Drawer

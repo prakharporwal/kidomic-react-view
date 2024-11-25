@@ -11,6 +11,6 @@ export function extractImageUrl(data: ImageModel | undefined) {
     data?.formats?.medium?.url ||
     data?.url ||
     data?.formats?.thumbnail?.url ||
-    "/placeholder.png"
+    "/placeholder-masha.jpeg"
   );
 }

@@ -7,8 +7,10 @@ import { appRouter } from "./routes";
 import store from "./redux/store/store";
 import { Provider } from "react-redux";
 import { ApolloProvider } from "@apollo/client";
+import { HelmetProvider } from "react-helmet-async";
 import { apolloClient } from "./configs/graphql/apolloConfig";
 import { mainTheme } from "./configs/theme";
+const helmetContext = {};
 
 export const App = () => {
   return (
@@ -17,9 +19,11 @@ export const App = () => {
         <ChakraProvider theme={mainTheme}>
           <Provider store={store}>
             <ApolloProvider client={apolloClient}>
-              <Suspense fallback={<LoadingShell />}>
-                <RouterProvider router={appRouter} />
-              </Suspense>
+              <HelmetProvider context={helmetContext}>
+                <Suspense fallback={<LoadingShell />}>
+                  <RouterProvider router={appRouter} />
+                </Suspense>
+              </HelmetProvider>
             </ApolloProvider>
           </Provider>
         </ChakraProvider>

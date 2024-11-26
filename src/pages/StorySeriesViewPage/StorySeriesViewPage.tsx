@@ -14,6 +14,7 @@ import EpisodeList from "./EpisodeList";
 import { useQuery, gql } from "@apollo/client";
 import { lazy } from "react";
 import "./style.css";
+import { Helmet } from "react-helmet-async";
 
 const GQL_QUERY_GET_STORIES = gql`
   query StoryDetails($documentId: ID!) {
@@ -96,6 +97,13 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
 
   return (
     <div className="page">
+      <Helmet>
+        <title>{story.title + ": Storyplanet"}</title>
+        <meta
+          name="description"
+          content={"Storyplanet :" + story.title + " " + story.description}
+        />
+      </Helmet>
       <Image
         w="calc(100% - 32px)"
         maxW={96}

@@ -1,4 +1,4 @@
-import { Text, chakra } from "@chakra-ui/react";
+import { Heading, chakra } from "@chakra-ui/react";
 import RecommendedStoryHorizontalList from "../RecommendedStoryHorizontalList";
 import { HomeRecommendationResponse } from "../../../apimodels/homepage";
 import LoadingShell from "../../../components/ui/LoadingShell";
@@ -44,16 +44,9 @@ export const Recommendations = () => {
         }
         return (
           <chakra.div key={recommendation.id}>
-            <Text
-              display={"inline"}
-              pl={2}
-              pr={4}
-              mb={4}
-              fontWeight={"bold"}
-              fontSize={"xl"}
-            >
+            <Heading as={"h1"} mt={8} mb={4} size={"lg"}>
               {recommendation.title}
-            </Text>
+            </Heading>
             <RecommendedStoryHorizontalList
               storyList={recommendation.stories}
               viewType={recommendation.viewType}

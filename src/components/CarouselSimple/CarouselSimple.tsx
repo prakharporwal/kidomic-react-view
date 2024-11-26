@@ -33,17 +33,17 @@ export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
   return (
     <Flex
       w={"100vw"}
-      bg="#1f1f1f"
+      // bg="#1f1f1f"
       mb={4}
       alignItems="center"
-      justifyContent="center"
+      justifyContent="flex-start"
       overflow={"hidden"}
     >
       <Flex overflow="hidden">
         <Flex
           pos="relative"
-          h={"auto"}
           w="full"
+          h={"auto"}
           maxW={"720px"}
           {...carouselStyle}
         >
@@ -61,7 +61,7 @@ export const CarouselSimple: React.FunctionComponent<IProps> = (props) => {
                     alt="carousel image"
                     boxSize="full"
                     width={"full"}
-                    backgroundSize="cover"
+                    objectFit={"cover"}
                   />
                 </Link>
               </Box>

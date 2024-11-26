@@ -26,9 +26,8 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
         <Box
           // w={44}
           // h={56}
-          w={{ base: 44, md: 48 }}
-          h={{ base: 56, md: 60 }}
-          borderRadius={4}
+          w={{ base: 36, md: 48 }}
+          h={{ base: 48, md: 60 }}
           overflow={"hidden"}
           position={"relative"}
         >
@@ -78,6 +77,7 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
             overflowWrap={"break-word"}
             noOfLines={2}
             textAlign={"center"}
+            color={"whitesmoke"}
           >
             {story.title}
           </Text>

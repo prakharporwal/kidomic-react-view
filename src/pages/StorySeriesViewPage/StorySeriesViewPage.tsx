@@ -55,6 +55,7 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
   const routeParams = useParams();
   const storyId = routeParams.storyId;
   const playing = props.playing;
+  const showButton = false;
 
   const { loading, error, data } = useQuery(GQL_QUERY_GET_STORIES, {
     variables: { documentId: storyId },
@@ -105,18 +106,22 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
         />
       </Helmet>
       <Image
-        w="calc(100% - 32px)"
-        maxW={96}
-        h={80}
-        m={4}
-        fit="contain"
+        maxH={{ base: 96, md: "400px" }}
+        maxW={{ base: 96, md: "600px" }}
+        m={1}
+        mt={8}
+        // h={80}
+        // w="calc(100% - 32px)"
+        // fit="cover"
         src={imageUrl}
         alt="cover img"
       />
-      <Box mx="8" gap={"2"}>
-        <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"}>
-          {story.title}
-        </Text>
+      <Box mx="8" gap={"1"}>
+        {story.title && (
+          <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"}>
+            {story.title}
+          </Text>
+        )}
         {isKOriginal && (
           <Flex
             direction={"row"}
@@ -128,14 +133,17 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
             <chakra.span fontSize="sm">{"Originals"}</chakra.span>
           </Flex>
         )}
-        <Text fontSize={"sm"} my={2} textAlign={"justify"} noOfLines={3}>
-          {story.description}
-        </Text>
+        {story.description && (
+          <Text fontSize={"sm"} my={1} textAlign={"justify"} noOfLines={3}>
+            {story.description}
+          </Text>
+        )}
       </Box>
-      <div className="video-controls" style={{ marginTop: "16px" }}>
-        <div className="action-buttons">
-          {/* Todo make a play story button functional */}
-          {/* <Button
+      {showButton && (
+        <div className="video-controls" style={{ marginTop: "16px" }}>
+          <div className="action-buttons">
+            {/* Todo make a play story button functional */}
+            {/* <Button
             rounded={"md"}
             size={"md"}
             color={"black"}
@@ -146,8 +154,9 @@ export const StorySeriesViewPage: React.FunctionComponent<any> = (props) => {
           >
             Play Story
           </Button> */}
+          </div>
         </div>
-      </div>
+      )}
       {story.videos && <EpisodeList episodes={story.videos} />}
       <Spacer h={108} />
     </div>

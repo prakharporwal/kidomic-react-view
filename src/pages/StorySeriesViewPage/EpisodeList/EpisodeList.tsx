@@ -8,7 +8,7 @@ interface IProps {
 
 export const EpisodeList: React.FunctionComponent<IProps> = ({ episodes }) => {
   return (
-    <List display={"flex"} flexDir={"column"} gap={4} mx={4} my={4}>
+    <List display={"flex"} flexDir={"column"} gap={4} mx={4} my={2}>
       <Text fontSize={"md"} textAlign={"left"} fontWeight={"bold"} mb={2}>
         Episodes -
       </Text>

@@ -25,7 +25,7 @@ export const RecommendedStoryHorizontalList: React.FunctionComponent<
       display={"flex"}
       flexDirection={"row"}
       overflowX={"auto"}
-      mb={10}
+      mb={8}
       gap={4}
       css={{
         "&::-webkit-scrollbar": {

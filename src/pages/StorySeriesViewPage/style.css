@@ -7,8 +7,10 @@
   background: #1f1f1f;
   overflow-x: auto;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .action-buttons {

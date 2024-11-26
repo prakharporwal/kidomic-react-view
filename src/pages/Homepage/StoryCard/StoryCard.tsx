@@ -14,23 +14,21 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
   return (
     <Link as={ReactLink} to={"/story/" + story.documentId}>
       <Flex
-        m={2}
+        my={2}
         alignItems="center"
         justifyContent="center"
         direction={"column"}
+        position={"relative"}
         _hover={{ transform: "scale(1.1)", transition: "transform 0.3s" }}
-        _active={{
-          border: "2px solid white",
-          borderRadius: "12px",
-          backgroundColor: "white",
-          color: "black",
-          lineHeight: "40px",
-        }}
+        _active={{ transform: "scale(1.1)", transition: "transform 0.3s" }}
+        _focus={{ transform: "scale(1.1)", transition: "transform 0.3s" }}
       >
         <Box
-          w={{ base: 32, md: 40 }}
-          h={{ base: 44, md: 52 }}
-          borderRadius={12}
+          // w={44}
+          // h={56}
+          w={{ base: 44, md: 48 }}
+          h={{ base: 56, md: 60 }}
+          borderRadius={4}
           overflow={"hidden"}
           position={"relative"}
         >
@@ -62,16 +60,28 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
           )}
           <SquareImage data={story.thumbnail_url} />
         </Box>
-        <Text
-          display="block"
-          fontSize="md"
-          fontWeight={"bold"}
-          overflowWrap={"break-word"}
-          noOfLines={2}
-          textAlign={"center"}
+        <Box
+          position={"absolute"}
+          // bg={"linear-gradient(to top, black, transparent);"}
+          bg={
+            "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0) 100%)"
+          }
+          bottom="0"
+          w={"100%"}
+          py={1}
+          px={2}
         >
-          {story.title}
-        </Text>
+          <Text
+            display="block"
+            fontSize="md"
+            fontWeight={"bold"}
+            overflowWrap={"break-word"}
+            noOfLines={2}
+            textAlign={"center"}
+          >
+            {story.title}
+          </Text>
+        </Box>
       </Flex>
     </Link>
   );

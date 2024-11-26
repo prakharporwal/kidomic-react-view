@@ -14,7 +14,7 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
       onClick={onOpen}
       style={{
         display: props.playerCurrentVideo.uri ? "block" : "none",
-        height: isOpen ? "calc(100vh)" : "",
+        height: isOpen ? "calc(100dvh)" : "",
       }}
     >
       {isOpen && (

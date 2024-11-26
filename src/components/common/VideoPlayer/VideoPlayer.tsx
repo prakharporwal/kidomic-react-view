@@ -11,15 +11,11 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
   return (
     <div
       className="video-player"
+      onClick={onOpen}
       style={{
         display: props.playerCurrentVideo.uri ? "block" : "none",
         height: isOpen ? "calc(100vh)" : "",
-        borderRadius: "12px 12px 0 0",
-        borderTop: "1px solid white",
-        transition: "height 0.3s",
-        zIndex: 2000,
       }}
-      onClick={onOpen}
     >
       {isOpen && (
         <Flex mt={4}>
@@ -33,7 +29,7 @@ export const VideoPlayer: React.FunctionComponent<any> = (props) => {
               onClose();
               e.stopPropagation();
             }}
-          ></IconButton>
+          />
           <AppLogo dark={true} />
         </Flex>
       )}

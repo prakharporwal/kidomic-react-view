@@ -45,7 +45,7 @@ export const VideoControls: React.FunctionComponent<any> = (props) => {
     <Flex
       flexDirection={props.isOpen ? "column" : "row"}
       gap={2}
-      mt={props.isOpen ? 0 : 4}
+      mt={props.isOpen ? 0 : 2}
       alignItems={"center"}
     >
       <Flex

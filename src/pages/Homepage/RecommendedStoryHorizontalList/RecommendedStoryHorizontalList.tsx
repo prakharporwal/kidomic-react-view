@@ -1,7 +1,6 @@
 import { List, ListItem } from "@chakra-ui/react";
 import StoryCard from "../StoryCard";
 import { StoryReponse } from "../../../apimodels/homepage";
-import { VerticalRectangleHorizontalList } from "./viewType/VerticalRectangleHorizontalList";
 
 interface IProps {
   storyList: StoryReponse[] | undefined;
@@ -26,19 +25,22 @@ export const RecommendedStoryHorizontalList: React.FunctionComponent<
       flexDirection={"row"}
       overflowX={"auto"}
       mb={8}
+      py={2}
       gap={4}
       css={{
         "&::-webkit-scrollbar": {
           width: "2px",
-          height: "0px",
+          height: "1px",
         },
         "&::-webkit-scrollbar-track": {
+          background: "red",
           width: "0px",
           height: "1px",
         },
         "&::-webkit-scrollbar-thumb": {
           background: "red",
-          borderRadius: "24px",
+          height: "1px",
+          borderRadius: "12px",
         },
       }}
     >

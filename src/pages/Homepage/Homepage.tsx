@@ -46,7 +46,7 @@ export const HomePage: React.FunctionComponent<any> = () => {
 
   return (
     <div className="page-wrapper">
-      {loading ? <LoadingShell /> : <CarouselSimple images={carouselImages} />}
+      {/* {loading ? <LoadingShell /> : <CarouselSimple images={carouselImages} />} */}
       <Recommendations />
       <Spacer h={108}></Spacer>
     </div>

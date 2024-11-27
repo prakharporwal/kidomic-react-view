@@ -24,34 +24,33 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
         _focus={{ transform: "scale(1.1)", transition: "transform 0.3s" }}
       >
         <Box
-          // w={44}
-          // h={56}
           w={{ base: 36, md: 48 }}
           h={{ base: 48, md: 60 }}
+          borderRadius={8}
           overflow={"hidden"}
           position={"relative"}
         >
           {/* {isTrending && (
             <Box
-              borderBottomLeftRadius={8}
-              borderBottomRightRadius={8}
-              position={"absolute"}
-              right={0}
-              bg={"white"}
-              px={1}
-              background={"orange.500"}
+            borderBottomLeftRadius={8}
+            borderBottomRightRadius={8}
+            position={"absolute"}
+            right={0}
+            bg={"white"}
+            px={1}
+            background={"orange.500"}
             >
-              <Text
-                height={4}
-                lineHeight={4}
-                fontSize={"sm"}
-                fontWeight={"bold"}
-                color={"white"}
-              >
-                Trending
-              </Text>
+            <Text
+            height={4}
+            lineHeight={4}
+            fontSize={"sm"}
+            fontWeight={"bold"}
+            color={"white"}
+            >
+            Trending
+            </Text>
             </Box>
-          )} */}
+            )} */}
           {isKOriginal && (
             <Box position={"absolute"} top={1} left={1}>
               <Image w={4} h={4} src={"/logo.png"} />
@@ -61,11 +60,11 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
         </Box>
         <Box
           position={"absolute"}
-          // bg={"linear-gradient(to top, black, transparent);"}
           bg={
             "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0) 100%)"
           }
           bottom="0"
+          borderRadius={8}
           w={"100%"}
           py={1}
           px={2}
@@ -73,7 +72,7 @@ export const StoryCard: React.FunctionComponent<IProps> = ({ story }) => {
           <Text
             display="block"
             fontSize="md"
-            fontWeight={"bold"}
+            fontWeight={"semibold"}
             overflowWrap={"break-word"}
             noOfLines={2}
             textAlign={"center"}

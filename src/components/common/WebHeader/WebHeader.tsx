@@ -46,7 +46,7 @@ export default function WebHeader() {
   }
 
   return (
-    <Box>
+    <Box as={"header"}>
       <Flex
         position={"fixed"}
         height={"14"}
@@ -63,19 +63,21 @@ export default function WebHeader() {
         <AppLogo />
       </Flex>
       {/* Fix: make desktop compatible responsive: compatible warning */}
-      <Flex
-        position={"absolute"}
-        display={{ base: "none", lg: "block" }}
-        top={{ base: 0, lg: 14 }}
-        textAlign={"center"}
-        color={"white"}
-        zIndex={{ base: -10, lg: 1000 }}
-        background={"gray.500"}
-        height={6}
-        width={"100vw"}
-      >
-        we currently support mobile device. view in mobile for best experience
-      </Flex>
+      {false && (
+        <Flex
+          position={"absolute"}
+          display={{ base: "none", lg: "block" }}
+          top={{ base: 0, lg: 14 }}
+          textAlign={"center"}
+          color={"white"}
+          zIndex={{ base: -10, lg: 1000 }}
+          background={"gray.500"}
+          height={6}
+          width={"100vw"}
+        >
+          we currently support mobile device. view in mobile for best experience
+        </Flex>
+      )}
       <MobileSideDrawer isOpen={isOpen} onClose={onClose} />
     </Box>
   );

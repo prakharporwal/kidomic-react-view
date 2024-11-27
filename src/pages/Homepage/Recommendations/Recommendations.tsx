@@ -44,7 +44,7 @@ export const Recommendations = () => {
         }
         return (
           <chakra.div key={recommendation.id}>
-            <Heading as={"h1"} mt={8} mb={4} size={"lg"}>
+            <Heading as={"h1"} mt={8} size={"lg"}>
               {recommendation.title}
             </Heading>
             <RecommendedStoryHorizontalList

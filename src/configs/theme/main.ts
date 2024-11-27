@@ -13,4 +13,8 @@ export const mainTheme = extendTheme({
       900: "#FF80",
     },
   },
+  fonts: {
+    heading: "Poppins, sans-serif",
+    body: "Poppins, sans-serif",
+  },
 });

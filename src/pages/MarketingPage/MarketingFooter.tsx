@@ -66,9 +66,10 @@ export default function MarketingFooter() {
               <AppLogo />
             </ListHeader>
             <Link href={"#"}>About Us</Link>
-            <Link href={"#"}>Blog</Link>
-            <Link href={"#"}>Careers</Link>
-            <Link href={"#"}>Contact Us</Link>
+            <Link href={"#"}>Contact Us @sanbreak100@gmail.com</Link>
+            <Link href={"#"}>
+              Want to be a creator write us @sanbreak100@gmail.com
+            </Link>
           </Stack>
 
           <Stack align={"flex-start"}>

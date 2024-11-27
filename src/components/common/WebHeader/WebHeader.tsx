@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Box,
+  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -61,6 +62,16 @@ export default function WebHeader() {
           <Icon strokeWidth={1.6} size={32} onClick={iconButtonClickHandler} />
         </Box>
         <AppLogo />
+        <Box marginLeft={"auto"} mr={4}>
+          <Button
+            variant="outline"
+            onClick={() => {
+              navigate("/user/signin");
+            }}
+          >
+            Login
+          </Button>
+        </Box>
       </Flex>
       {/* Fix: make desktop compatible responsive: compatible warning */}
       {false && (

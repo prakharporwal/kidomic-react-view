@@ -33,12 +33,10 @@ export const RecommendedStoryHorizontalList: React.FunctionComponent<
           height: "1px",
         },
         "&::-webkit-scrollbar-track": {
-          background: "red",
           width: "0px",
           height: "1px",
         },
         "&::-webkit-scrollbar-thumb": {
-          background: "red",
           height: "1px",
           borderRadius: "12px",
         },

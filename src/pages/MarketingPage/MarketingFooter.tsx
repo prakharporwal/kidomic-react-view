@@ -11,6 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+import AppLogo from "../../components/common/WebHeader/AppLogo";
 
 const ListHeader = ({ children }: { children: ReactNode }) => {
   return (
@@ -61,7 +62,9 @@ export default function MarketingFooter() {
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           <Stack align={"flex-start"}>
-            <ListHeader>Socialhub</ListHeader>
+            <ListHeader>
+              <AppLogo />
+            </ListHeader>
             <Link href={"#"}>About Us</Link>
             <Link href={"#"}>Blog</Link>
             <Link href={"#"}>Careers</Link>
@@ -99,7 +102,7 @@ export default function MarketingFooter() {
           justify={{ md: "space-between" }}
           align={{ md: "center" }}
         >
-          <Text>© 2023 Socialhub. All rights reserved</Text>
+          <Text>© 2024 Storyplanet. All rights reserved</Text>
           <Stack direction={"row"} spacing={6}>
             <SocialButton label={"Twitter"} href={"#"}>
               <FaTwitter />

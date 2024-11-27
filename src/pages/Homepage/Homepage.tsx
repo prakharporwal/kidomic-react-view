@@ -8,6 +8,7 @@ import {
   HomeCarouselResponse,
   HomeRecommendationResponse,
 } from "../../apimodels/homepage";
+import MarketingFooter from "../MarketingPage/MarketingFooter";
 
 export const HomePage: React.FunctionComponent<any> = () => {
   const [recommendations, setRecommendations] = useState<
@@ -47,8 +48,17 @@ export const HomePage: React.FunctionComponent<any> = () => {
   return (
     <div className="page-wrapper">
       {/* {loading ? <LoadingShell /> : <CarouselSimple images={carouselImages} />} */}
+      <div className="main-hero">
+        <div className="main-wrapper">
+          <span className="main-heading">STORY PLANET</span>
+          <span className="main-subheading">
+            Entertainment, Stories are more
+          </span>
+        </div>
+      </div>
       <Recommendations />
       <Spacer h={108}></Spacer>
+      <MarketingFooter />
     </div>
   );
 };

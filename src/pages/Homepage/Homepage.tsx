@@ -52,7 +52,7 @@ export const HomePage: React.FunctionComponent<any> = () => {
         <div className="main-wrapper">
           <span className="main-heading">STORY PLANET</span>
           <span className="main-subheading">
-            Entertainment, Stories are more
+            Entertainment, Stories and more
           </span>
         </div>
       </div>

@@ -62,7 +62,7 @@ export default function WebHeader() {
           <Icon strokeWidth={1.6} size={32} onClick={iconButtonClickHandler} />
         </Box>
         <AppLogo />
-        <Box marginLeft={"auto"} mr={4}>
+        {/* <Box marginLeft={"auto"} mr={4}>
           <Button
             variant="outline"
             onClick={() => {
@@ -71,7 +71,7 @@ export default function WebHeader() {
           >
             Login
           </Button>
-        </Box>
+        </Box> */}
       </Flex>
       {/* Fix: make desktop compatible responsive: compatible warning */}
       {false && (

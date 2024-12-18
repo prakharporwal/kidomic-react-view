@@ -8,7 +8,6 @@ import {
   HomeCarouselResponse,
   HomeRecommendationResponse,
 } from "../../apimodels/homepage";
-import MarketingFooter from "../MarketingPage/MarketingFooter";
 
 export const HomePage: React.FunctionComponent<any> = () => {
   const [recommendations, setRecommendations] = useState<
@@ -58,7 +57,6 @@ export const HomePage: React.FunctionComponent<any> = () => {
       </div>
       <Recommendations />
       <Spacer h={108}></Spacer>
-      <MarketingFooter />
     </div>
   );
 };

@@ -46,7 +46,7 @@
     -webkit-text-fill-color: transparent;
 
     background-size: 300% 300%; /* Enlarged for smooth movement */
-    animation: gradient-animation 6s ease infinite; /* Apply animation */
+    animation: gradient-animation 4s ease infinite; /* Apply animation */
   }
 
   .main-subheading {

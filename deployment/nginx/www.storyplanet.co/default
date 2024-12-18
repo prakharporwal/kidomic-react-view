@@ -52,6 +52,31 @@ server {
 }
 
 server {
+     server_name asset.storyplanet.co;
+
+     location /storage/ {
+            proxy_pass             https://s3.ap-south-1.amazonaws.com/kid.sociohub.live;
+            proxy_set_header       Host s3.ap-south-1.amazonaws.com;
+            proxy_cache            STATIC;
+            proxy_cache_valid      200  1d;
+            proxy_cache_use_stale  error timeout invalid_header updating
+                                   http_500 http_502 http_503 http_504;
+           # proxy_http_version     1.1;
+           # proxy_connect_timeout  60s;
+           # proxy_read_timeout     60s;
+           # proxy_send_timeout     60s;
+    }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/asset.storyplanet.co/fullchain.pem;>
+    ssl_certificate_key /etc/letsencrypt/live/asset.storyplanet.co/privkey.pe>
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+
+server {
     if ($host = storyplanet.co) {
         return 301 https://www.storyplanet.co$request_uri ;
     } # managed by Certbot
@@ -69,4 +94,16 @@ server {
 
     server_name kid.sociohub.live www.storyplanet.co storyplanet.co;
     return 404; # managed by Certbot
+}
+
+server {
+    if ($host = asset.storyplanet.co) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+     server_name asset.storyplanet.co;
+     listen 80;
+     listen [::]:80;
+     return 404; # managed by Certbot
 }
